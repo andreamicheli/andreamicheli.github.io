@@ -1,0 +1,48 @@
+body{
+  background-color: #84CEE8;
+}
+.codice{
+  padding-top: 30px;
+  font-size: 300%;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-left: 50%;
+}
+.inserisci{
+  padding-top: 100px;
+  color: #91FFF6;
+  font-size: 200%;
+  width: 50%;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.presentazione{
+  padding-top: 100px;
+  color: #333366;
+  font-size: 170%;
+  width: 50%;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#codice{
+  width: 100%;
+}
+
+.entra{
+  padding-top: 4%;
+}
+#entra{
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  background-color: #333366;
+  border-color: white;
+  font-size: 50%;
+}
