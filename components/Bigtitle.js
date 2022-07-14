@@ -1,7 +1,7 @@
 function Bigtitle({title}) {
   return (
     <div className="
-    text-9xl text-peri_dark font-bold font-Larsseit">
+    lg:text-9xl md:text-8xl text-6xl text-peri_dark font-bold font-Larsseit">
         {title}
     </div>
   )
