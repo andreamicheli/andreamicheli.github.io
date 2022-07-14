@@ -18,3 +18,35 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../public/Larsseit.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../public/Larsseit-Bold.woff') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../public/Larsseit-Medium.woff') format('woff2');
+  font-weight: medium;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../public/Larsseit-Thin.woff') format('woff2');
+  font-weight: thin;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Larsseit';
+  src: url('../public/Larsseit-ExtraBold.woff') format('woff2');
+  font-weight: extrabold;
+  font-style: normal;
+}
+
