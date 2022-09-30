@@ -1,9 +1,17 @@
 import Head from 'next/head'
+import One from '../windows/One'
 import Zero from '../windows/Zero'
+import Arrow from '../components/Arrow'
+
 
 export default function Home() {
+
+
   return (
     <>
+      <div className='bg-transparent fixed bottom-5 right-10'>
+        <Arrow />
+      </div>
       <Head>
         <title>Andrea Micheli&#39;s portfolio</title>
         <meta name="description" content="Andrea Micheli's portfolio" />
@@ -16,6 +24,7 @@ export default function Home() {
         <Zero />
 
         {/* pagina 1 */}
+        <One />
 
         {/* pagina 2 */}
         

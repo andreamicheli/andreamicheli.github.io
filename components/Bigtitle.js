@@ -1,4 +1,4 @@
-function Bigtitle({title}) {
+function Bigtitle({opacity, title}) {
   return (
     <div className="
     lg:text-9xl md:text-8xl text-6xl text-peri_dark font-bold font-Larsseit">

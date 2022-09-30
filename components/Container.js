@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Container({children}) {
+function Container({vh, children}) {
   return (
-    <div className="w-screen h-screen p-10">
+    <div className={"w-screen p-10"} style={{height: vh}}>
         {children}
     </div>
   )
