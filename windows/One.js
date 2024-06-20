@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Bigtitle from "../components/Bigtitle";
 import Mediumtitle from "../components/Mediumtitle";
 import Container from "../components/Container";
@@ -8,20 +8,23 @@ import useWindowDimensions from "../hooks/useDimensions";
 import { motion } from "framer-motion";
 import AnimatedImage from "../components/ScrollingImage";
 
-function One() {
+function One({ files }) {
   const { height, width } = useWindowDimensions();
+  const randomValue = () =>
+    Number(((Math.random() * (0.8 - 0.01) + 0.01) * 100).toFixed(2));
+  const getRandomNumber = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  const numbers = () => {
+    let num1 = getRandomNumber(3200, 3800);
+    let num2 = getRandomNumber(3400, 4000);
+    while (Math.abs(num1 - num2) < 200) {
+      num1 = getRandomNumber(3200, 3800);
+      num2 = getRandomNumber(3400, 4000);
+    }
+    return [num1, num2].sort((a, b) => a - b);
+  };
 
-  // var sticky = !!text.current && text.current.offsetTop;
-
-  // const [issticky, setisSticky] = useState(false)
-
-  // window.addEventListener('scroll', (event) => {
-  //   if (window.pageYOffset > sticky) {
-  //     setisSticky(true)
-  //   } else {
-  //     setisSticky(false)
-  //   }
-  // });
+  console.log(randomValue());
 
   return (
     <div>
@@ -104,97 +107,126 @@ function One() {
         <div className="z-30">
           <div className="absolute left-20 scale-75">
             <AnimatedImage
-              src="/beauty/venus.jpg"
+              src="/beauty/la Nascita di Venere.jpg"
               alt="Venus"
-              start={3000}
-              end={4500}
+              indexes={[3000, 4500]}
               speed={1}
+              label="la Nascita di Venere.jpg"
             />
           </div>
 
           <div className="absolute left-60 scale-75">
             <AnimatedImage
-              src="/beauty/sistinemadonna.png"
+              src="/beauty/extract from Raffaello's madonna sistina.png"
               alt="pitti"
-              start={3400}
-              end={3700}
+              indexes={[3400, 3700]}
               speed={2}
+              label="extract from Raffaello's madonna sistina.png"
             />
           </div>
           <div className="absolute left-80 w-20">
             <AnimatedImage
-              src="/beauty/png-clipart-rose-rose.png"
+              src="/beauty/extract from american beauty.png"
               alt="rose"
-              start={3200}
-              end={4200}
+              indexes={[3200, 4200]}
               speed={5}
+              label="extract from american beauty.png"
             />
           </div>
           <div className="absolute right-20 scale-75">
             <AnimatedImage
-              src="/beauty/foglie.png"
+              src="/beauty/fall in Turin.png"
               alt="leaves"
-              start={3500}
-              end={4800}
+              indexes={[3500, 4800]}
               speed={4}
+              label="fall in Turin.png"
             />
           </div>
           <div className="absolute right-80 scale-50">
             <AnimatedImage
-              src="/beauty/moonrise.jpg"
+              src="/beauty/a wonderful movie.jpg"
               alt="moonrise kingdom"
-              start={3600}
-              end={4300}
+              indexes={[3600, 4300]}
               speed={1}
+              label="a wonderful movie.jpg"
             />
           </div>
 
           <div className="absolute right-1/3 scale-50">
             <AnimatedImage
-              src="/beauty/css3.svg"
+              src="/beauty/the language of god.svg"
               alt="css"
-              start={4000}
-              end={4300}
+              indexes={[4000, 4300]}
               speed={2}
+              label="the language of god.svg"
             />
           </div>
 
           <div className="absolute left-1/3 scale-50">
             <AnimatedImage
-              src="/beauty/piccolo.jpg"
+              src="/beauty/me in my current form.jpg"
               alt="young me"
-              start={4300}
-              end={5000}
+              indexes={[4300, 5000]}
               speed={1}
+              label="me in my current form.jpg"
             />
           </div>
 
           <div className="absolute left-96 w-28">
             <AnimatedImage
-              src="/beauty/moto.jpg"
-              alt="motorbike in indonesia"
-              start={4000}
-              end={4300}
+              src="/beauty/own picture of bali's jungle.jpg"
+              alt="own picture of bali's jungle"
+              indexes={[4000, 4300]}
               speed={0.5}
+              label="own picture of bali's jungle.jpg"
             />
           </div>
           <div className="absolute right-1/2 w-28">
             <AnimatedImage
-              src="/beauty/tenda.jpg"
+              src="/beauty/own picture of tent camp in indonesia.jpg"
               alt="tent in bali"
-              start={3200}
-              end={4300}
+              indexes={[3200, 4300]}
               speed={0.5}
+              width={112}
+              label="own picture of tent camp in indonesia.jpg"
             />
           </div>
           <div className="absolute right-96 w-28">
             <AnimatedImage
-              src="/beauty/via.jpg"
+              src="/beauty/own picture of a vietnamese traditional road.jpg"
               alt="traditional road in vietnam"
-              start={3500}
-              end={4100}
+              indexes={[3500, 4100]}
               speed={2}
+              width={112}
+              label="own picture of a vietnamese traditional road.jpg"
             />
+          </div>
+
+          <div className="z-30 w-28">
+            {/* Existing code */}
+
+            {files.map((file, index) => (
+              // {fs.readdirSync("public/beauty/array").map((file, index) => (
+              <div
+                key={index}
+                className={`absolute`}
+                style={{ right: randomValue() + "%" }}
+              >
+                <AnimatedImage
+                  src={`/beauty/array/${file}`}
+                  alt={`image-${index}`}
+                  indexes={numbers()}
+                  speed={
+                    (randomValue() / 200) * 10 < 0 ||
+                    (randomValue() / 200) * 10 > 10
+                      ? 1
+                      : (randomValue() / 200) * 10
+                  }
+                  width={(randomValue() / 100) * 400 + 100}
+                  label={file}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </Container>
