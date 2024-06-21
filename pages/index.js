@@ -6,6 +6,7 @@ import Zero from "../windows/Zero";
 import Arrow from "../components/Arrow";
 import fs from "fs";
 import Two from "../windows/Two";
+import Three from "../windows/Three";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -38,7 +39,7 @@ export default function Home({ files }) {
         <Two />
 
         {/* pagina 3 */}
-
+        <Three />
         {/* pagina 4 */}
 
         {/* pagina 5 */}

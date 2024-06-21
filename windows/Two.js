@@ -1,26 +1,72 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Container from "../components/Container";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Bigtitle from "../components/Bigtitle";
 
 function Two() {
+  const paragraphTarget = useRef(null);
   const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start 0.9", "start 0.25"],
+
+  const { scrollYProgress: opacityScrollProgress } = useScroll({
+    target: paragraphTarget,
+    offset: ["start 0.9", "start 0.4"],
   });
 
+  const { scrollYProgress: scaleScrollProgress } = useScroll({
+    target: container,
+    offset: ["end 0.9", "end 0.4"],
+  });
+
+  const scale = useTransform(scaleScrollProgress, [0, 1], [1, 100]);
+
   const paragraph =
-    "I found a way to express my creativity through Frontend programming";
+    "I found my way to express creativity through Frontend development .";
   const words = paragraph.split(" ");
-  return (
-    <Container vh={"150vh"}>
-      <div className="w-full h-full flex items-center justify-center text-4xl font-bold">
-        <motion.p
-          ref={container}
+
+  const Word = ({ children, progress, range }) => {
+    const opacity = useTransform(progress, range, [0, 1]);
+
+    return (
+      <span className="lg:text-8xl md:text-4xl text-3xl text-peri_dark font-bold font-Larsseit normal relative">
+        <motion.span
           style={{
-            opacity: scrollYProgress,
-            width: "66%",
+            opacity: opacity,
+            overflowWrap: "normal",
+            visibility: children === "Frontend" ? "hidden" : "visible",
+          }}
+        >
+          {children}
+        </motion.span>
+        {children === "Frontend" && (
+          <motion.span
+            style={{
+              opacity: opacity,
+              overflowWrap: "normal",
+              position: "absolute",
+              zIndex: 10,
+              top: "-3px",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              transform: `translateX(-${scaleScrollProgress * 100}%)`, // Translate left based on scaleScrollProgress
+              scale,
+            }}
+          >
+            {children}
+          </motion.span>
+        )}
+        <span className={"normal"}>&nbsp;</span>
+      </span>
+    );
+  };
+
+  return (
+    <div className="h-[120vh] w-screen p-10 relative" ref={container}>
+      <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold">
+        <motion.p
+          ref={paragraphTarget}
+          style={{
+            opacity: opacityScrollProgress,
+            width: "50%",
             overflowWrap: "break-word",
             textAlign: "justify",
           }}
@@ -31,29 +77,20 @@ function Two() {
             const end = start + 1 / words.length;
 
             return (
-              <Word key={i} progress={scrollYProgress} range={[start, end]}>
-                {word}
+              <Word
+                key={i}
+                progress={opacityScrollProgress}
+                range={[start, end]}
+              >
+                {word === "." ? "" : word}
               </Word>
             );
           })}
         </motion.p>
       </div>
-    </Container>
+    </div>
   );
 }
-
-const Word = ({ key, children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0, 1]);
-
-  return (
-    <span className="lg:text-8xl md:text-4xl text-3xl text-peri_dark font-bold font-Larsseit normal">
-      <motion.span style={{ opacity: opacity, overflowWrap: "normal" }}>
-        {children}
-      </motion.span>
-      <span className={"normal"}>&nbsp;</span>
-    </span>
-  );
-};
 
 // Export the component to make it accessible from other files
 export default Two;

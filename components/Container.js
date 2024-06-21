@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function Container({vh, children}) {
+function Container({ vh, children }) {
   return (
-    <div className={"w-screen p-10"} style={{height: vh}}>
-        {children}
+    <div className={"w-screen p-10"} style={{ height: vh }}>
+      {children}
     </div>
-  )
+  );
 }
 
-export default Container
+export default Container;
