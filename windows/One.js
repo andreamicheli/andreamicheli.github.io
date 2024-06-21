@@ -104,24 +104,26 @@ function One({ files }) {
           />
         </div>
 
-        <div className="z-30">
-          <div className="absolute left-20 scale-75">
+        <div className="z-30 mx-12">
+          <div className="absolute left-20">
             <AnimatedImage
               src="/beauty/la Nascita di Venere.jpg"
               alt="Venus"
               indexes={[3000, 4500]}
               speed={1}
               label="la Nascita di Venere.jpg"
+              width={200}
             />
           </div>
 
-          <div className="absolute left-60 scale-75">
+          <div className="absolute left-60">
             <AnimatedImage
               src="/beauty/extract from Raffaello's madonna sistina.png"
               alt="pitti"
               indexes={[3400, 3700]}
               speed={2}
               label="extract from Raffaello's madonna sistina.png"
+              width={150}
             />
           </div>
           <div className="absolute left-80 w-20">
@@ -133,42 +135,46 @@ function One({ files }) {
               label="extract from american beauty.png"
             />
           </div>
-          <div className="absolute right-20 scale-75">
+          <div className="absolute right-20">
             <AnimatedImage
               src="/beauty/fall in Turin.png"
               alt="leaves"
               indexes={[3500, 4800]}
               speed={4}
               label="fall in Turin.png"
+              width={200}
             />
           </div>
-          <div className="absolute right-80 scale-50">
+          <div className="absolute right-80">
             <AnimatedImage
               src="/beauty/a wonderful movie.jpg"
               alt="moonrise kingdom"
               indexes={[3600, 4300]}
               speed={1}
               label="a wonderful movie.jpg"
+              width={150}
             />
           </div>
 
-          <div className="absolute right-1/3 scale-50">
+          <div className="absolute right-1/3">
             <AnimatedImage
               src="/beauty/the language of god.svg"
               alt="css"
               indexes={[4000, 4300]}
               speed={2}
               label="the language of god.svg"
+              width={150}
             />
           </div>
 
-          <div className="absolute left-1/3 scale-50">
+          <div className="absolute left-1/3 w-16">
             <AnimatedImage
               src="/beauty/me in my current form.jpg"
               alt="young me"
               indexes={[4300, 5000]}
               speed={1}
               label="me in my current form.jpg"
+              width={150}
             />
           </div>
 
