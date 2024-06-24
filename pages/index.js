@@ -28,21 +28,24 @@ export default function Home({ files }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-cream_extralight">
+      <div className="bg-transparent">
         {/* pagina 0 */}
-        <Zero />
+        <div className="bg-cream_extralight">
+          <Zero />
 
-        {/* pagina 1 */}
-        <One files={files} />
+          {/* pagina 1 */}
+          <One files={files} />
 
-        {/* pagina 2 */}
-        <Two />
+          {/* pagina 2 */}
+          <Two />
+        </div>
+        <div className="bg-peri_dark">
+          {/* pagina 3 */}
+          <Three />
+          {/* pagina 4 */}
 
-        {/* pagina 3 */}
-        <Three />
-        {/* pagina 4 */}
-
-        {/* pagina 5 */}
+          {/* pagina 5 */}
+        </div>
       </div>
     </>
   );

@@ -8,8 +8,8 @@ const Three = () => {
   return (
     // JSX code for your component's UI goes here
     <Container vh={"250vh"}>
-      <div className="w-full h-full flex items-start justify-center">
-        <Bigtitle title={"three"}></Bigtitle>
+      <div className="w-full h-full flex items-start justify-center text-cream_extralight text-7xl">
+        pagina tre
       </div>
     </Container>
   );

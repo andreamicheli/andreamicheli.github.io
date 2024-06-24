@@ -14,10 +14,10 @@ function Two() {
 
   const { scrollYProgress: scaleScrollProgress } = useScroll({
     target: container,
-    offset: ["end 0.9", "end 0.4"],
+    offset: ["30vh", "120vh"],
   });
 
-  const scale = useTransform(scaleScrollProgress, [0, 1], [1, 100]);
+  const scale = useTransform(scaleScrollProgress, [0, 1], [1, 150]);
 
   const paragraph =
     "I found my way to express creativity through Frontend development .";
@@ -25,6 +25,7 @@ function Two() {
 
   const Word = ({ children, progress, range }) => {
     const opacity = useTransform(progress, range, [0, 1]);
+    const x = useTransform(scaleScrollProgress, [0, 1], [0, 2500]);
 
     return (
       <span className="lg:text-8xl md:text-4xl text-3xl text-peri_dark font-bold font-Larsseit normal relative">
@@ -46,8 +47,7 @@ function Two() {
               zIndex: 10,
               top: "-3px",
               left: "50%",
-              transform: "translate(-50%, -50%)",
-              transform: `translateX(-${scaleScrollProgress * 100}%)`, // Translate left based on scaleScrollProgress
+              x,
               scale,
             }}
           >
@@ -60,7 +60,10 @@ function Two() {
   };
 
   return (
-    <div className="h-[120vh] w-screen p-10 relative" ref={container}>
+    <div
+      className="h-[230vh] w-screen p-10 relative overflow-x-clip overflow-y-hidden"
+      ref={container}
+    >
       <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold">
         <motion.p
           ref={paragraphTarget}
