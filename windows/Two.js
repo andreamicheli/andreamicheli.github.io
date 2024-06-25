@@ -27,9 +27,17 @@ function Two() {
 
   const Word = ({ children, progress, range }) => {
     const opacity = useTransform(progress, range, [0, 1]);
-    const x = useTransform(scaleScrollProgress, [0, 1], [0, 5000], {
-      ease: easeIn,
-    });
+    const x = useTransform(
+      scaleScrollProgress,
+      [0, 1],
+      [0, window.innerWidth < 768 ? 4500 : 5000],
+      {
+        ease: easeIn,
+      }
+    );
+    // const x = useTransform(scaleScrollProgress, [0, 1], [0, 5000], {
+    //   ease: easeIn,
+    // });
 
     return (
       <span className="lg:text-8xl md:text-4xl text-3xl text-peri_dark font-bold font-Larsseit normal relative">
