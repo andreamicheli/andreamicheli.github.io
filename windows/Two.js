@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Container from "../components/Container";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { easeIn, motion, useScroll, useTransform } from "framer-motion";
 import Bigtitle from "../components/Bigtitle";
 
 function Two() {
@@ -17,7 +17,9 @@ function Two() {
     offset: ["30vh", "120vh"],
   });
 
-  const scale = useTransform(scaleScrollProgress, [0, 1], [1, 150]);
+  const scale = useTransform(scaleScrollProgress, [0, 1], [1, 300], {
+    ease: easeIn,
+  });
 
   const paragraph =
     "I found my way to express creativity through Frontend development .";
@@ -25,7 +27,9 @@ function Two() {
 
   const Word = ({ children, progress, range }) => {
     const opacity = useTransform(progress, range, [0, 1]);
-    const x = useTransform(scaleScrollProgress, [0, 1], [0, 2500]);
+    const x = useTransform(scaleScrollProgress, [0, 1], [0, 5000], {
+      ease: easeIn,
+    });
 
     return (
       <span className="lg:text-8xl md:text-4xl text-3xl text-peri_dark font-bold font-Larsseit normal relative">
@@ -61,9 +65,11 @@ function Two() {
 
   return (
     <div
-      className="h-[230vh] w-screen p-10 relative overflow-x-clip overflow-y-hidden"
+      className="h-[230vh] w-screen p-10 relative overflow-x-clip"
+      style={{ contain: "paint" }}
       ref={container}
     >
+      {/* <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold bg-amber-200 overflow-y-hidden overflow-x-visible"> */}
       <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold">
         <motion.p
           ref={paragraphTarget}
