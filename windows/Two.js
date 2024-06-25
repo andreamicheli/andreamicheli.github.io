@@ -30,7 +30,14 @@ function Two() {
     const x = useTransform(
       scaleScrollProgress,
       [0, 1],
-      [0, window.innerWidth < 768 ? 4500 : 5000],
+      [
+        0,
+        typeof window !== "undefined"
+          ? window.innerWidth <= 768
+            ? 4500
+            : 5000
+          : 5000,
+      ],
       {
         ease: easeIn,
       }
