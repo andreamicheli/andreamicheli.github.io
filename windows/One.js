@@ -15,11 +15,11 @@ function One({ files }) {
   const getRandomNumber = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
   const numbers = () => {
-    let num1 = getRandomNumber(3200, 3800);
-    let num2 = getRandomNumber(3400, 4000);
+    let num1 = getRandomNumber(5200, 5800);
+    let num2 = getRandomNumber(5400, 6000);
     while (Math.abs(num1 - num2) < 200) {
-      num1 = getRandomNumber(3200, 3800);
-      num2 = getRandomNumber(3400, 4000);
+      num1 = getRandomNumber(5200, 5800);
+      num2 = getRandomNumber(5400, 6000);
     }
     return [num1, num2].sort((a, b) => a - b);
   };
@@ -28,7 +28,7 @@ function One({ files }) {
 
   return (
     <div>
-      <Container vh={"300vh"}>
+      <Container vh={"500vh"}>
         <div className="sticky top-0 w-full h-screen">
           <div className="absolute top-20 w-max">
             <Plx
@@ -111,7 +111,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/la Nascita di Venere.jpg"
                 alt="Venus"
-                indexes={[3000, 4500]}
+                indexes={[5300, 6500]}
                 speed={1}
                 label="la Nascita di Venere.jpg"
                 width={200}
@@ -122,7 +122,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/extract from Raffaello's madonna sistina.png"
                 alt="pitti"
-                indexes={[3400, 3700]}
+                indexes={[5400, 5700]}
                 speed={2}
                 label="extract from Raffaello's madonna sistina.png"
                 width={150}
@@ -132,7 +132,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/extract from american beauty.png"
                 alt="rose"
-                indexes={[3200, 4200]}
+                indexes={[5200, 6200]}
                 speed={5}
                 label="extract from american beauty.png"
               />
@@ -141,7 +141,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/fall in Turin.png"
                 alt="leaves"
-                indexes={[3500, 4800]}
+                indexes={[5500, 6800]}
                 speed={4}
                 label="fall in Turin.png"
                 width={200}
@@ -151,7 +151,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/a wonderful movie.jpg"
                 alt="moonrise kingdom"
-                indexes={[3600, 4300]}
+                indexes={[5600, 6300]}
                 speed={1}
                 label="a wonderful movie.jpg"
                 width={150}
@@ -162,7 +162,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/the language of god.svg"
                 alt="css"
-                indexes={[4000, 4300]}
+                indexes={[6000, 6300]}
                 speed={2}
                 label="the language of god.svg"
                 width={150}
@@ -173,7 +173,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/me in my current form.jpg"
                 alt="young me"
-                indexes={[4300, 5000]}
+                indexes={[5300, 6000]}
                 speed={1}
                 label="me in my current form.jpg"
                 width={150}
@@ -184,7 +184,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/own picture of bali's jungle.jpg"
                 alt="own picture of bali's jungle"
-                indexes={[4000, 4300]}
+                indexes={[6000, 6300]}
                 speed={0.5}
                 label="own picture of bali's jungle.jpg"
               />
@@ -193,7 +193,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/own picture of tent camp in indonesia.jpg"
                 alt="tent in bali"
-                indexes={[3200, 4300]}
+                indexes={[5200, 6300]}
                 speed={0.5}
                 width={112}
                 label="own picture of tent camp in indonesia.jpg"
@@ -203,7 +203,7 @@ function One({ files }) {
               <AnimatedImage
                 src="/beauty/own picture of a vietnamese traditional road.jpg"
                 alt="traditional road in vietnam"
-                indexes={[3500, 4100]}
+                indexes={[5500, 6100]}
                 speed={2}
                 width={112}
                 label="own picture of a vietnamese traditional road.jpg"
