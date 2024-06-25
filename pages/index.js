@@ -7,6 +7,8 @@ import Arrow from "../components/Arrow";
 import fs from "fs";
 import Two from "../windows/Two";
 import Three from "../windows/Three";
+import { useEffect } from "react";
+import Lenis from "lenis";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -17,8 +19,30 @@ export async function getStaticProps() {
 }
 
 export default function Home({ files }) {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <>
+      <style jsx global>{`
+        * {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE 10+ */
+        }
+
+        *::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera*/
+        }
+      `}</style>
       <div className="bg-transparent fixed bottom-5 right-10">
         <Arrow />
       </div>

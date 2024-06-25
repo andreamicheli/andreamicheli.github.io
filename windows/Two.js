@@ -65,11 +65,10 @@ function Two() {
 
   return (
     <div
-      className="h-[230vh] w-screen p-10 relative overflow-x-clip"
+      className="h-[230vh] p-10 relative overflow-x-clip"
       style={{ contain: "paint" }}
       ref={container}
     >
-      {/* <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold bg-amber-200 overflow-y-hidden overflow-x-visible"> */}
       <div className="w-full h-screen sticky top-0 flex items-center justify-center text-4xl font-bold">
         <motion.p
           ref={paragraphTarget}
