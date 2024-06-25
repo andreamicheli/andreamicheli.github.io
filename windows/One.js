@@ -28,8 +28,11 @@ function One({ files }) {
 
   return (
     <Container vh={"500vh"}>
-      <div className="sticky top-0 w-full h-screen">
-        <div className="absolute top-20 w-max">
+      <div
+        className="sticky top-0 w-full h-screen"
+        style={{ contain: "paint" }}
+      >
+        <div className="absolute top-20">
           <Plx
             parallaxData={[
               {
@@ -62,7 +65,7 @@ function One({ files }) {
           </Plx>
         </div>
 
-        <div className="absolute top-3/4 right-10 w-max">
+        <div className="absolute top-3/4 right-10">
           <Plx
             parallaxData={[
               {
@@ -103,7 +106,7 @@ function One({ files }) {
             className="z-50"
           />
         </div>
-        <div className="z-30 mx-12">
+        <div className="z-30 mx-12 w-full bg-slate-400">
           <div className="absolute left-20">
             <AnimatedImage
               src="/beauty/la Nascita di Venere.jpg"
