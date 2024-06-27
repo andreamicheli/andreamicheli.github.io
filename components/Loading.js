@@ -41,7 +41,8 @@ const Loading = ({ children }) => {
         const currentTime = Date.now();
         const elapsedTime = currentTime - startTime;
         const percentage = Math.floor((elapsedTime / 3000) * 100);
-        setPercentage(percentage);
+        if (percentage < 100) setPercentage(percentage);
+        if (percentage >= 95) setPercentage(100);
         if (elapsedTime < 3000) {
           setTimeout(updatePercentage, 100);
         }
@@ -62,13 +63,41 @@ const Loading = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Function to prevent default behavior for scroll events
+    const preventScroll = (e) => {
+      e.preventDefault();
+    };
+
+    if (loading) {
+      // Block scrolling by adding event listeners
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+    } else {
+      // Allow scrolling by removing event listeners
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+    }
+
+    return () => {
+      // Cleanup function to ensure scrolling is allowed when the component unmounts
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+    };
+  }, [loading]);
+
   return (
     <>
       <div
-        className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-center items-center"
+        className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-end items-end px-20 py-4"
         style={{ display: loading ? "block" : "none" }}
       >
-        <p>Loading... {percentage}%</p>
+        <p
+          className="text-peri_dark text-[15rem] font-bold p-0 m-0"
+          style={{ opacity: percentage >= 20 ? percentage + "%" : "20%" }}
+        >
+          {percentage}%
+        </p>
       </div>
       {children}
     </>
