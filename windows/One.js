@@ -24,8 +24,6 @@ function One({ files }) {
     return [num1, num2].sort((a, b) => a - b);
   };
 
-  console.log(randomValue());
-
   return (
     <Container vh={"500vh"}>
       <div

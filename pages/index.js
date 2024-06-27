@@ -9,6 +9,7 @@ import Two from "../windows/Two";
 import Three from "../windows/Three";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import Loading from "../components/Loading";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -32,7 +33,7 @@ export default function Home({ files }) {
   }, []);
 
   return (
-    <>
+    <Loading>
       <style jsx global>{`
         * {
           scrollbar-width: none; /* Firefox */
@@ -52,7 +53,7 @@ export default function Home({ files }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-transparent">
+      <div className="bg-transparent" id="main">
         {/* pagina 0 */}
         <div className="bg-cream_extralight">
           <Zero />
@@ -71,6 +72,6 @@ export default function Home({ files }) {
           {/* pagina 5 */}
         </div>
       </div>
-    </>
+    </Loading>
   );
 }
