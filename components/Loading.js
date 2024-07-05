@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { motion, useIsPresent } from "framer-motion";
 
 const Loading = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [percentage, setPercentage] = useState(0);
+  // const isPresent = useIsPresent();
 
   useEffect(() => {
     const images = document.getElementsByTagName("img");
@@ -88,9 +90,11 @@ const Loading = ({ children }) => {
 
   return (
     <>
-      <div
+      <motion.div
         className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-end items-end lg:px-10 py-4 sm:px-4"
-        style={{ display: loading ? "flex" : "none" }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: loading ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
       >
         <p
           className="text-peri_dark lg:text-[15rem] text-9xl font-bold p-0 m-0"
@@ -98,7 +102,7 @@ const Loading = ({ children }) => {
         >
           {percentage}%
         </p>
-      </div>
+      </motion.div>
       {children}
     </>
   );
