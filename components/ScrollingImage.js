@@ -20,7 +20,7 @@ const AnimatedImage = ({
       clamp: false,
     }
   );
-  const opacity = useTransform(scrollY, [indexes[0], indexes[1]], [1, 0]);
+  // const opacity = useTransform(scrollY, [indexes[0], indexes[1]], [1, 0]);
 
   return (
     <motion.div
@@ -35,7 +35,7 @@ const AnimatedImage = ({
         src={src}
         alt={alt}
         style={{
-          opacity,
+          // opacity,
           position: "absolute",
           top: 0,
           left: 0,

@@ -89,11 +89,11 @@ const Loading = ({ children }) => {
   return (
     <>
       <div
-        className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-end items-end px-20 py-4"
-        style={{ display: loading ? "block" : "none" }}
+        className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-end items-end lg:px-10 py-4 sm:px-4"
+        style={{ display: loading ? "flex" : "none" }}
       >
         <p
-          className="text-peri_dark text-[15rem] font-bold p-0 m-0"
+          className="text-peri_dark lg:text-[15rem] text-9xl font-bold p-0 m-0"
           style={{ opacity: percentage >= 20 ? percentage + "%" : "20%" }}
         >
           {percentage}%
