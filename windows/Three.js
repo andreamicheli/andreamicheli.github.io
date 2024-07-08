@@ -16,9 +16,10 @@ const Three = () => {
   return (
     <Container vh={"250vh"} style={"overflow-hidden"}>
       <div
-        className="w-full h-full flex flex-col items-center justify-start text-cream_extralight text-7xl"
+        className="w-full h-full flex flex-col items-center justify-start text-cream_extralight lg:text-9xl text-7xl lg:rotate-0 rotate-[30deg]"
         ref={container}
       >
+        <div className="lg:h-0 h-36"></div>
         {/* <Slide  src={"/logos/aalto.png"} text={"Helsinki"} left={"-40%"} /> */}
         <Slide
           src="/logos/aalto.png"

@@ -25,17 +25,17 @@ const Slide = (props) => {
 const Phrase = ({ src, text, uni }) => {
   return (
     <div className={"px-5 flex gap-5 items-center"}>
-      <p className="text-[7.5vw]">
+      <p>
         {text} <span className="font-thin"> - {uni}</span>
       </p>
-      <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
+      <span className="relative h-full aspect-[4/2] rounded-full overflow-hidden">
         <Image style={{ objectFit: "scale-down" }} src={src} alt="image" fill />
       </span>
-      <p className="text-[7.5vw]">
+      <p>
         {text}
         <span className="font-thin"> - {uni}</span>
       </p>
-      <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
+      <span className="relative h-full aspect-[4/2] rounded-full overflow-hidden">
         <Image style={{ objectFit: "scale-down" }} src={src} alt="image" fill />
       </span>
     </div>
