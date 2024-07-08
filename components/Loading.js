@@ -93,12 +93,12 @@ const Loading = ({ children }) => {
       <motion.div
         className="fixed top-0 left-0 w-screen h-screen bg-white z-50 flex justify-end items-end lg:px-10 lg:py-4 py-20 sm:px-4"
         style={{ clipPath: "circle(150% at 80% 85%)" }}
-        // animate={{
-        //   clipPath: loading
-        //     ? "circle(150% at 80% 85%)"
-        //     : "circle(0% at 80% 85%)",
-        // }}
-        // transition={{ duration: 0.5 }}
+        animate={{
+          clipPath: loading
+            ? "circle(150% at 80% 85%)"
+            : "circle(0% at 80% 85%)",
+        }}
+        transition={{ duration: 0.5 }}
       >
         <p
           className="text-peri_dark lg:text-[15rem] text-9xl font-bold p-0 m-0"
