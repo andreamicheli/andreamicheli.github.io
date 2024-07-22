@@ -4,30 +4,45 @@ import Container from "../components/Container";
 import Slide from "../components/Slide";
 import { useScroll } from "framer-motion";
 import Fillertitle from "../components/Fillertitle";
+import CardSlide from "../components/CardSlide";
 
 const Three = () => {
-  const container = useRef();
-  const containerFill = useRef();
+  const containerEducation = useRef();
+  const containerExperience = useRef();
+  const containerFillEducation = useRef();
+  const containerFillExperience = useRef();
 
-  const { scrollYProgress: scrollYProgressFiller } = useScroll({
-    target: containerFill,
+  const { scrollYProgress: scrollYProgressFillerEducation } = useScroll({
+    target: containerFillEducation,
+    offset: ["start end", "end start"],
+  });
+  const { scrollYProgress: scrollYProgressFillerExperience } = useScroll({
+    target: containerFillExperience,
     offset: ["start end", "end start"],
   });
 
-  const { scrollYProgress: scrollYProgressSlide } = useScroll({
-    target: container,
+  const { scrollYProgress: scrollYProgressSlideEducation } = useScroll({
+    target: containerEducation,
+
+    offset: ["start end", "end start"],
+  });
+  const { scrollYProgress: scrollYProgressSlideExperience } = useScroll({
+    target: containerExperience,
 
     offset: ["start end", "end start"],
   });
 
   return (
-    <Container vh={"250vh"} style={"overflow-hidden flex flex-col gap-40"}>
-      <div className="w-full flex justify-center" ref={containerFill}>
-        <Fillertitle title="Education" progress={scrollYProgressFiller} />
+    <Container vh={"500vh"} style={"overflow-hidden flex flex-col gap-40"}>
+      <div className="w-full flex justify-center" ref={containerFillEducation}>
+        <Fillertitle
+          title="Education"
+          progress={scrollYProgressFillerEducation}
+        />
       </div>
       <div
         className="w-full h-full flex flex-col items-center justify-start mt-40 text-cream_extralight lg:text-9xl text-7xl lg:rotate-0 rotate-[30deg]"
-        ref={container}
+        ref={containerEducation}
       >
         {/* <Slide  src={"/logos/aalto.png"} text={"Helsinki"} left={"-40%"} /> */}
         <Slide
@@ -35,7 +50,7 @@ const Three = () => {
           text="Helsinki"
           uni="Aalto"
           left="-20%"
-          progress={scrollYProgressSlide}
+          progress={scrollYProgressSlideEducation}
           direction={"left"}
         />
         <Slide
@@ -43,7 +58,7 @@ const Three = () => {
           left={"-40%"}
           text={"Stockholm"}
           uni="KTH"
-          progress={scrollYProgressSlide}
+          progress={scrollYProgressSlideEducation}
           direction={"right"}
         />
         <Slide
@@ -51,7 +66,7 @@ const Three = () => {
           left={"-60%"}
           text={"Turin"}
           uni="PoliTo"
-          progress={scrollYProgressSlide}
+          progress={scrollYProgressSlideEducation}
           direction={"left"}
         />
         <Slide
@@ -59,8 +74,45 @@ const Three = () => {
           left={"-80%"}
           text={"Milan"}
           uni="PoliMi"
-          progress={scrollYProgressSlide}
+          progress={scrollYProgressSlideEducation}
           direction={"right"}
+        />
+      </div>
+      <div className="w-full flex justify-center" ref={containerFillExperience}>
+        <Fillertitle
+          title="Experience"
+          progress={scrollYProgressFillerExperience}
+        />
+      </div>
+      <div
+        className="w-full h-full flex flex-col items-center justify-start mt-40 text-cream_extralight gap-56"
+        ref={containerExperience}
+      >
+        <CardSlide
+          company={"Restworld"}
+          image={"/logos/restworld.png"}
+          office={"/places/restworld_office.jpg"}
+          imagePosition={"right"}
+          paragraph={
+            "Took part in the development of the web-app where the company’s main service is provided. Mastered technologies like React, Typescript, Tailwind, Next.js"
+          }
+          subtitle={"2021-2022 - Startup"}
+          title={"Frontend engineer"}
+          progress={scrollYProgressSlideExperience}
+          direction={"right"}
+        />
+        <CardSlide
+          company={"Iriscube Reply"}
+          image={"/logos/reply.png"}
+          office={"/places/reply_office.jpg"}
+          imagePosition={"left"}
+          paragraph={
+            "Independently developed and tested the interface of a web application for a major European credit institution. Mastered technologies like Angular, RxJs and worked with an Agile approach"
+          }
+          subtitle={"2022-2023 - IT Consultancy Firm"}
+          title={"Frontend engineer"}
+          progress={scrollYProgressSlideExperience}
+          direction={"left"}
         />
       </div>
     </Container>
