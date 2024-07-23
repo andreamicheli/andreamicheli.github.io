@@ -10,6 +10,7 @@ import Three from "../windows/Three";
 import { useEffect } from "react";
 import Lenis from "lenis";
 import Loading from "../components/Loading";
+import Four from "../windows/Four";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -68,7 +69,7 @@ export default function Home({ files }) {
           {/* pagina 3 */}
           <Three />
           {/* pagina 4 */}
-
+          <Four />
           {/* pagina 5 */}
         </div>
       </div>

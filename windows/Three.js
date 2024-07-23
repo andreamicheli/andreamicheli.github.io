@@ -96,7 +96,7 @@ const Three = () => {
           paragraph={
             "Took part in the development of the web-app where the company’s main service is provided. Mastered technologies like React, Typescript, Tailwind, Next.js"
           }
-          subtitle={"2021-2022 - Startup"}
+          subtitle={"2021·2022 - Startup"}
           title={"Frontend engineer"}
           progress={scrollYProgressSlideExperience}
           direction={"right"}
@@ -109,7 +109,7 @@ const Three = () => {
           paragraph={
             "Independently developed and tested the interface of a web application for a major European credit institution. Mastered technologies like Angular, RxJs and worked with an Agile approach"
           }
-          subtitle={"2022-2023 - IT Consultancy Firm"}
+          subtitle={"2022·2023 - IT Consultancy Firm"}
           title={"Frontend engineer"}
           progress={scrollYProgressSlideExperience}
           direction={"left"}
