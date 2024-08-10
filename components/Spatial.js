@@ -9,22 +9,56 @@ const Spatial = ({ pictures }) => {
     offset: ["start start", "end end"],
   });
 
-  const scale0 = useTransform(scrollYProgress, [0, 1], [1, 4]);
-  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 6]);
+  const scale0 = useTransform(scrollYProgress, [0, 0.5], [1, 4]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.5], [1, 5]);
+  const scale2 = useTransform(scrollYProgress, [0, 0.5], [1, 6]);
+
+  const translateX = useTransform(
+    scrollYProgress,
+    [0.8, 1],
+    ["100px", "-50px"]
+  );
+  const opacity = useTransform(scrollYProgress, [0.8, 1], ["0%", "100%"]);
+
+  const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   const picturesObject = [
     {
       src: pictures[0],
       scale: scale0,
+      copy: {
+        title: "Space-Guesser",
+        subtitle: "autonomous academic project",
+        description:
+          "A simple web game that aims to explore and expand your knowledge about our solar system",
+        tech: "React, TailwindCSS, MobX, Firebase(backend), two external APIs",
+        demo: "https://space-guesser.web.app",
+        imgs: [],
+      },
     },
     {
       src: pictures[1],
       scale: scale1,
+      copy: {
+        title: "",
+        subtitle: "autonomous personal project",
+        description: "",
+        tech: "",
+        demo: "https://.web.app/",
+        imgs: [],
+      },
     },
     {
       src: pictures[2],
       scale: scale2,
+      copy: {
+        title: "",
+        subtitle: "autonomous academic project",
+        description: "",
+        tech: "",
+        demo: "https://space-guesser.web.app/",
+        imgs: [],
+      },
     },
   ];
 
@@ -32,11 +66,11 @@ const Spatial = ({ pictures }) => {
   const getImageContainerStyles = (index) => {
     switch (index) {
       case 0:
-        return { width: "25vw", height: "25vh" };
+        return { width: "30vw", height: "25vh" };
       case 1:
-        return { top: "-30vh", left: "5vw", width: "35vw", height: "30vh" };
+        return { top: "10vh", left: "20vw", width: "35vw", height: "30vh" };
       case 2:
-        return { top: "-10vh", left: "-25vw", width: "20vw", height: "45vh" };
+        return { top: "-10vh", left: "-20vw", width: "20vw", height: "45vh" };
       case 3:
         return { left: "27.5vw", width: "25vw", height: "25vh" }; // top is not changed
       case 4:
@@ -58,16 +92,52 @@ const Spatial = ({ pictures }) => {
   return (
     <div className="w-full h-[500vh] relative" ref={container}>
       <div className="sticky overflow-hidden top-0 h-screen">
-        {picturesObject.map(({ src, scale }, index) => {
+        {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
           return (
             <motion.div
               key={index}
-              style={{ scale }}
               className="w-full h-full top-0 absolute flex items-center justify-center"
+              style={{ scale, x: translateX }} //add grayscale with scroll -> documentation
             >
-              <div style={imageContainerStyles} className="relative">
-                <Image src={src} fill alt="image" className="object-cover" />
+              <div
+                style={imageContainerStyles}
+                className="relative flex justify-center"
+              >
+                <Image
+                  src={src}
+                  fill
+                  alt="image"
+                  className="!static object-contain p-2 !w-auto"
+                />
+                <motion.div
+                  className="flex flex-col py-2 w-20 gap-2 items-center text-cream_dark"
+                  style={{ opacity }}
+                >
+                  <div className="flex flex-col items-center">
+                    {" "}
+                    <div className="text-[.5rem] font-bold">{copy.title}</div>
+                    <div className="text-[.2rem] font-thin text-cream_extralight">
+                      {copy.subtitle}
+                    </div>
+                  </div>
+
+                  <div className="text-[.3rem] text-cream_extralight bg-white bg-opacity-10 p-2 rounded-md">
+                    {copy.description}
+                  </div>
+                  <p className="text-[.3rem] mt-0 -mb-1">Stack:</p>
+                  <div className="text-[.3rem] font-thin text-cream_extralight bg-white bg-opacity-20 p-2 rounded-md">
+                    {copy.tech}
+                  </div>
+                  <a
+                    href={copy.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[.3rem] bg-cream_medium text-peri_dark font-bold brightness-90 shadow-md p-1 rounded-md hover:underline hover:cursor-pointer hover:brightness-100 hover:scale-105"
+                  >
+                    {copy.demo.replace(/(https?:\/\/)?(www\.)?/, "")}
+                  </a>
+                </motion.div>
               </div>
             </motion.div>
           );
