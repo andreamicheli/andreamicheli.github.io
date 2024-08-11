@@ -9,16 +9,20 @@ const Spatial = ({ pictures }) => {
     offset: ["start start", "end end"],
   });
 
-  const scale0 = useTransform(scrollYProgress, [0, 0.5], [1, 4]);
-  const scale1 = useTransform(scrollYProgress, [0, 0.5], [1, 5]);
-  const scale2 = useTransform(scrollYProgress, [0, 0.5], [1, 6]);
+  const scale0 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 4, 4, 1]);
+  const scale1 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 5, 5, 1]);
+  const scale2 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 6, 6, 1]);
 
   const translateX = useTransform(
     scrollYProgress,
-    [0.8, 1],
-    ["100px", "-50px"]
+    [0, 0.33, 0.66, 0.8, 1],
+    ["0px", "100px", "-50px", "-50px", "0px"]
   );
-  const opacity = useTransform(scrollYProgress, [0.8, 1], ["0%", "100%"]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66, 0.8, 0.85],
+    ["0%", "0%", "100%", "100%", "0%"]
+  );
 
   const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
@@ -90,7 +94,7 @@ const Spatial = ({ pictures }) => {
   };
 
   return (
-    <div className="w-full h-[500vh] relative" ref={container}>
+    <div className="w-full h-[800vh] relative" ref={container}>
       <div className="sticky overflow-hidden top-0 h-screen">
         {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
