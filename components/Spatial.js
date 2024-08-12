@@ -2,6 +2,11 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image"; // Assuming you're using Next.js
 
+//1. rise the height of container by 800vh * picturesObject.length
+//2. conditionally render the main motion.div in a list
+//3. subdivide the keyframes of the useTransforms with overhead
+//4. track the current project to show and find an algorithm to fix the translation
+
 const Spatial = ({ pictures }) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
