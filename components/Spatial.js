@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image"; // Assuming you're using Next.js
+import React, { useEffect, useRef, useState } from "react";
 
-//1. rise the height of container by 800vh * picturesObject.length
+//1. rise the height of container by 800vh * picturesObject.length DONE
 //2. conditionally render the main motion.div in a list
 //3. subdivide the keyframes of the useTransforms with overhead
 //4. track the current project to show and find an algorithm to fix the translation
@@ -14,22 +14,53 @@ const Spatial = ({ pictures }) => {
     offset: ["start start", "end end"],
   });
 
-  const scale0 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 4, 4, 1]);
-  const scale1 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 5, 5, 1]);
-  const scale2 = useTransform(scrollYProgress, [0, 0.33, 0.8, 1], [1, 6, 6, 1]);
+  const unit = 1 / pictures.length;
+
+  const [current, setCurrent] = useState(0);
+
+  const scaleTimestamps = [
+    current * unit,
+    current * unit + (1 * unit) / 5,
+    current * unit + (2 * unit) / 5,
+    current * unit + (3 * unit) / 5,
+  ];
+
+  const scale0 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
+  const scale1 = useTransform(scrollYProgress, scaleTimestamps, [1, 5, 5, 1]);
+  const scale2 = useTransform(scrollYProgress, scaleTimestamps, [1, 6, 6, 1]);
 
   const translateX = useTransform(
     scrollYProgress,
-    [0, 0.33, 0.66, 0.8, 1],
+    [
+      current * unit,
+      current * unit + (1 * unit) / 5,
+      current * unit + (2 * unit) / 5,
+      current * unit + (2.3 * unit) / 5,
+      current * unit + (2.5 * unit) / 5,
+    ],
     ["0px", "100px", "-50px", "-50px", "0px"]
   );
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.33, 0.66, 0.8, 0.85],
+    [
+      current * unit,
+      current * unit + (1 * unit) / 5,
+      current * unit + (2 * unit) / 5,
+      current * unit + (2.3 * unit) / 5,
+      current * unit + (2.5 * unit) / 5,
+    ],
     ["0%", "0%", "100%", "100%", "0%"]
   );
 
-  const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+  const transformTrigger = useTransform(scrollYProgress, (value) => {
+    return Math.floor(value / (1 / pictures.length)); // Calculate which step the scroll is at
+  });
+
+  useEffect(() => {
+    return transformTrigger.on("change", (latestStep) => {
+      setCurrent(latestStep);
+    });
+  }, [transformTrigger]);
 
   const picturesObject = [
     {
@@ -49,10 +80,11 @@ const Spatial = ({ pictures }) => {
       src: pictures[1],
       scale: scale1,
       copy: {
-        title: "",
+        title: "NgPokèdex",
         subtitle: "autonomous personal project",
-        description: "",
-        tech: "",
+        description:
+          "A digital version of the pokedex, with rudimental battle and collectible features integrated in the web app",
+        tech: "Angular, Vanilla CSS, PokeAPI, LocalStorage functions",
         demo: "https://.web.app/",
         imgs: [],
       },
@@ -61,15 +93,18 @@ const Spatial = ({ pictures }) => {
       src: pictures[2],
       scale: scale2,
       copy: {
-        title: "",
+        title: "FoodStuff",
         subtitle: "autonomous academic project",
-        description: "",
-        tech: "",
+        description:
+          "An all-around project of a grocery tracker app, with image recognition of ingredients in your fridge",
+        tech: "React Native,  Figma",
         demo: "https://space-guesser.web.app/",
         imgs: [],
       },
     },
   ];
+
+  const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   // Define dynamic styles based on the index
   const getImageContainerStyles = (index) => {
@@ -99,7 +134,17 @@ const Spatial = ({ pictures }) => {
   };
 
   return (
-    <div className="w-full h-[800vh] relative" ref={container}>
+    <div
+      className="w-full relative"
+      ref={container}
+      style={{ height: picturesObject.length * 800 + "vh" }}
+    >
+      {/* <div className="fixed top-0 right-0 p-4 bg-green-200">
+        {scaleTimestamps.toString()}
+      </div> */}
+
+      <div className="w-full h-full absolute top-1/3 border-t-2 border-red-500 z-10"></div>
+      <div className="w-full h-full absolute top-2/3 border-t-2 border-red-500 z-10"></div>
       <div className="sticky overflow-hidden top-0 h-screen">
         {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
@@ -108,6 +153,7 @@ const Spatial = ({ pictures }) => {
               key={index}
               className="w-full h-full top-0 absolute flex items-center justify-center"
               style={{ scale, x: translateX }} //add grayscale with scroll -> documentation
+              // style={{ scale }} //add grayscale with scroll -> documentation
             >
               <div
                 style={imageContainerStyles}
