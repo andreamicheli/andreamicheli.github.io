@@ -26,8 +26,16 @@ const Spatial = ({ pictures }) => {
   ];
 
   const scale0 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
-  const scale1 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
-  const scale2 = useTransform(scrollYProgress, scaleTimestamps, [1, 3, 3, 1]);
+  const scale1 = useTransform(
+    scrollYProgress,
+    scaleTimestamps,
+    [1, 3.3, 3.3, 1]
+  );
+  const scale2 = useTransform(
+    scrollYProgress,
+    scaleTimestamps,
+    [1, 3.3, 3.3, 1]
+  );
 
   const panCameraX = useTransform(
     scrollYProgress,
@@ -44,7 +52,24 @@ const Spatial = ({ pictures }) => {
       13 / 15,
       1,
     ],
-    ["0%", "0%", "0%", "-70%", "-70%", "0%", "0%", "70%", "70%", "0%", "0%"]
+    ["0%", "0%", "0%", "-60%", "-60%", "0%", "0%", "70%", "70%", "0%", "0%"]
+  );
+  const panCameraY = useTransform(
+    scrollYProgress,
+    [
+      0,
+      3 / 15,
+      1 / 3,
+      6 / 15,
+      7 / 15,
+      8 / 15,
+      2 / 3,
+      11 / 15,
+      12 / 15,
+      13 / 15,
+      1,
+    ],
+    ["0%", "0%", "0%", "-30%", "-30%", "0%", "0%", "32%", "32%", "0%", "0%"]
   );
 
   const translateX = useTransform(
@@ -69,6 +94,39 @@ const Spatial = ({ pictures }) => {
       current * unit + (2.5 * unit) / 5,
     ],
     ["0%", "0%", "100%", "100%", "0%"]
+  );
+  const opacityExternal = useTransform(
+    scrollYProgress,
+    [
+      0,
+      1 / 15,
+      2 / 15,
+      3 / 15,
+      1 / 3,
+      6 / 15,
+      7 / 15,
+      8 / 15,
+      2 / 3,
+      11 / 15,
+      12 / 15,
+      13 / 15,
+      1,
+    ],
+    [
+      "100%",
+      "0%",
+      "0%",
+      "100%",
+      "100%",
+      "0%",
+      "0%",
+      "100%",
+      "100%",
+      "0%",
+      "0%",
+      "100%",
+      "100%",
+    ]
   );
 
   const transformTrigger = useTransform(scrollYProgress, (value) => {
@@ -149,8 +207,8 @@ const Spatial = ({ pictures }) => {
         return {
           top: picturesObject[index].position.top || "-10%",
           left: picturesObject[index].position.left || "-20%",
-          width: "20%",
-          height: "45%",
+          width: "35%",
+          height: "30%",
           // x: translateX,
         };
       case 3:
@@ -209,11 +267,14 @@ const Spatial = ({ pictures }) => {
             <motion.div
               key={index}
               className="w-full h-full top-0 absolute flex items-center justify-center"
-              style={{ scale, x: panCameraX }} //add grayscale with scroll -> documentation
+              style={{ scale, x: panCameraX, y: panCameraY }} //add grayscale with scroll -> documentation
               // style={{ scale }} //add grayscale with scroll -> documentation
             >
               <motion.div
-                style={imageContainerStyles}
+                style={{
+                  ...imageContainerStyles,
+                  opacity: current !== index && opacityExternal,
+                }}
                 className="relative flex justify-center"
               >
                 <Image
@@ -224,7 +285,7 @@ const Spatial = ({ pictures }) => {
                 />
                 <motion.div
                   className="flex flex-col py-2 w-20 gap-2 items-center text-cream_dark"
-                  style={{ opacity }}
+                  style={{ opacity: current === index ? opacity : "0%" }}
                 >
                   <div className="flex flex-col items-center">
                     {" "}

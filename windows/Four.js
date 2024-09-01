@@ -4,8 +4,8 @@ import Spatial from "../components/Spatial";
 function Four() {
   const pictures = [
     "/portfolio/Space-Guesser.png",
-    "/portfolio/fridgestuff.png",
     "/portfolio/ngPokedex.png",
+    "/portfolio/fridgestuff.png",
   ];
   return <Spatial pictures={pictures} />;
 }
