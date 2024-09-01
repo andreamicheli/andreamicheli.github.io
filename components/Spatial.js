@@ -19,15 +19,33 @@ const Spatial = ({ pictures }) => {
   const [current, setCurrent] = useState(0);
 
   const scaleTimestamps = [
-    current * unit,
-    current * unit + (1 * unit) / 5,
-    current * unit + (2 * unit) / 5,
-    current * unit + (3 * unit) / 5,
+    current * unit, //0 1/3 2/3 -> 1
+    current * unit + (1 * unit) / 5, //1/15 2/5 11/15 -> 4
+    current * unit + (2 * unit) / 5, //2/15 7/15 12/15 -> 4
+    current * unit + (3 * unit) / 5, //3/15 8/15 13/15 -> 1
   ];
 
   const scale0 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
-  const scale1 = useTransform(scrollYProgress, scaleTimestamps, [1, 5, 5, 1]);
-  const scale2 = useTransform(scrollYProgress, scaleTimestamps, [1, 6, 6, 1]);
+  const scale1 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
+  const scale2 = useTransform(scrollYProgress, scaleTimestamps, [1, 3, 3, 1]);
+
+  const panCameraX = useTransform(
+    scrollYProgress,
+    [
+      0,
+      3 / 15,
+      1 / 3,
+      6 / 15,
+      7 / 15,
+      8 / 15,
+      2 / 3,
+      11 / 15,
+      12 / 15,
+      13 / 15,
+      1,
+    ],
+    ["0%", "0%", "0%", "-70%", "-70%", "0%", "0%", "70%", "70%", "0%", "0%"]
+  );
 
   const translateX = useTransform(
     scrollYProgress,
@@ -38,8 +56,9 @@ const Spatial = ({ pictures }) => {
       current * unit + (2.3 * unit) / 5,
       current * unit + (2.5 * unit) / 5,
     ],
-    ["0px", "100px", "-50px", "-50px", "0px"]
+    ["0px", "30px", "-10px", "-10px", "0px"]
   );
+
   const opacity = useTransform(
     scrollYProgress,
     [
@@ -75,6 +94,7 @@ const Spatial = ({ pictures }) => {
         demo: "https://space-guesser.web.app",
         imgs: [],
       },
+      position: { top: "auto", left: "auto" },
     },
     {
       src: pictures[1],
@@ -88,6 +108,7 @@ const Spatial = ({ pictures }) => {
         demo: "https://.web.app/",
         imgs: [],
       },
+      position: { top: "10%", left: "20%" },
     },
     {
       src: pictures[2],
@@ -101,6 +122,7 @@ const Spatial = ({ pictures }) => {
         demo: "https://space-guesser.web.app/",
         imgs: [],
       },
+      position: { top: "-10%", left: "-20%" },
     },
   ];
 
@@ -110,24 +132,59 @@ const Spatial = ({ pictures }) => {
   const getImageContainerStyles = (index) => {
     switch (index) {
       case 0:
-        return { width: "30vw", height: "25vh" };
+        return {
+          // x: translateX,
+          width: "30%",
+          height: "25%",
+        };
       case 1:
-        return { top: "10vh", left: "20vw", width: "35vw", height: "30vh" };
+        return {
+          top: picturesObject[index].position.top || "10%",
+          left: picturesObject[index].position.left || "20%",
+          width: "35%",
+          height: "30%",
+          // x: translateX,
+        };
       case 2:
-        return { top: "-10vh", left: "-20vw", width: "20vw", height: "45vh" };
+        return {
+          top: picturesObject[index].position.top || "-10%",
+          left: picturesObject[index].position.left || "-20%",
+          width: "20%",
+          height: "45%",
+          // x: translateX,
+        };
       case 3:
-        return { left: "27.5vw", width: "25vw", height: "25vh" }; // top is not changed
+        return {
+          top: picturesObject[index].position.top || "auto",
+          left: picturesObject[index].position.left || "27.5%",
+          width: "25%",
+          height: "25%",
+          // x: translateX,
+        }; // top is not changed
       case 4:
-        return { top: "27.5vh", left: "5vw", width: "20vw", height: "25vh" };
+        return {
+          top: picturesObject[index].position.top || "27.5%",
+          left: picturesObject[index].position.left || "5%",
+          width: "20%",
+          height: "25%",
+          // x: translateX,
+        };
       case 5:
         return {
-          top: "27.5vh",
-          left: "-22.5vw",
-          width: "30vw",
-          height: "25vh",
+          top: picturesObject[index].position.top || "27.5%",
+          left: picturesObject[index].position.left || "-22.5%",
+          width: "30%",
+          height: "25%",
+          // x: translateX,
         };
       case 6:
-        return { top: "22.5vh", left: "25vw", width: "15vw", height: "15vh" };
+        return {
+          top: picturesObject[index].position.top || "22.5%",
+          left: picturesObject[index].position.left || "25%",
+          width: "15%",
+          height: "15%",
+          // x: translateX,
+        };
       default:
         return {}; // Default case if no specific style is needed
     }
@@ -139,9 +196,9 @@ const Spatial = ({ pictures }) => {
       ref={container}
       style={{ height: picturesObject.length * 800 + "vh" }}
     >
-      {/* <div className="fixed top-0 right-0 p-4 bg-green-200">
-        {scaleTimestamps.toString()}
-      </div> */}
+      <div className="fixed top-0 right-0 p-4 bg-green-200">
+        {scrollYProgress.get()}
+      </div>
 
       <div className="w-full h-full absolute top-1/3 border-t-2 border-red-500 z-10"></div>
       <div className="w-full h-full absolute top-2/3 border-t-2 border-red-500 z-10"></div>
@@ -152,10 +209,10 @@ const Spatial = ({ pictures }) => {
             <motion.div
               key={index}
               className="w-full h-full top-0 absolute flex items-center justify-center"
-              style={{ scale, x: translateX }} //add grayscale with scroll -> documentation
+              style={{ scale, x: panCameraX }} //add grayscale with scroll -> documentation
               // style={{ scale }} //add grayscale with scroll -> documentation
             >
-              <div
+              <motion.div
                 style={imageContainerStyles}
                 className="relative flex justify-center"
               >
@@ -193,7 +250,7 @@ const Spatial = ({ pictures }) => {
                     {copy.demo.replace(/(https?:\/\/)?(www\.)?/, "")}
                   </a>
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.div>
           );
         })}
