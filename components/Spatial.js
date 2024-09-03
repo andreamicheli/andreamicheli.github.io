@@ -21,8 +21,8 @@ const Spatial = ({ pictures }) => {
   const scaleTimestamps = [
     current * unit, //0 1/3 2/3 -> 1
     current * unit + (1 * unit) / 5, //1/15 2/5 11/15 -> 4
-    current * unit + (2 * unit) / 5, //2/15 7/15 12/15 -> 4
-    current * unit + (3 * unit) / 5, //3/15 8/15 13/15 -> 1
+    current * unit + (3 * unit) / 5, //2/15 7/15 12/15 -> 4
+    current * unit + (4 * unit) / 5, //3/15 8/15 13/15 -> 1
   ];
 
   const panningArrayKeyFrames = () => {
@@ -31,8 +31,8 @@ const Spatial = ({ pictures }) => {
       arr.push(
         i * unit,
         i * unit + (1 * unit) / 5,
-        i * unit + (2 * unit) / 5,
-        i * unit + (3 * unit) / 5
+        i * unit + (3 * unit) / 5,
+        i * unit + (4 * unit) / 5
       );
     }
     return arr;
@@ -134,61 +134,36 @@ const Spatial = ({ pictures }) => {
     panningArrayValues("top")
   );
 
-  const translateX = useTransform(
-    scrollYProgress,
-    [
-      current * unit,
-      current * unit + (1 * unit) / 5,
-      current * unit + (2 * unit) / 5,
-      current * unit + (2.3 * unit) / 5,
-      current * unit + (2.5 * unit) / 5,
-    ],
-    ["0px", "30px", "-10px", "-10px", "0px"]
-  );
+  // const translateX = useTransform(
+  //   scrollYProgress,
+  //   [
+  //     current * unit,
+  //     current * unit + (1 * unit) / 5,
+  //     current * unit + (2 * unit) / 5,
+  //     current * unit + (2.3 * unit) / 5,
+  //     current * unit + (2.5 * unit) / 5,
+  //   ],
+  //   ["0px", "30px", "-10px", "-10px", "0px"]
+  // );
 
   const opacity = useTransform(
     scrollYProgress,
     [
       current * unit,
-      current * unit + (1 * unit) / 5,
-      current * unit + (2 * unit) / 5,
-      current * unit + (2.3 * unit) / 5,
-      current * unit + (2.5 * unit) / 5,
+      current * unit + (0.8 * unit) / 5,
+      current * unit + (1.4 * unit) / 5,
+      current * unit + (2.8 * unit) / 5,
+      current * unit + (3.4 * unit) / 5,
     ],
     ["0%", "0%", "100%", "100%", "0%"]
   );
   const opacityExternal = useTransform(
     scrollYProgress,
-    [
-      0,
-      1 / 15,
-      2 / 15,
-      3 / 15,
-      1 / 3,
-      6 / 15,
-      7 / 15,
-      8 / 15,
-      2 / 3,
-      11 / 15,
-      12 / 15,
-      13 / 15,
-      1,
-    ],
-    [
-      "100%",
-      "0%",
-      "0%",
-      "100%",
-      "100%",
-      "0%",
-      "0%",
-      "100%",
-      "100%",
-      "0%",
-      "0%",
-      "100%",
-      "100%",
-    ]
+    panningArrayKeyFrames(),
+    Array.from(
+      { length: pictures.length * 4 },
+      (_, i) => ["100%", "0%", "0%", "100%"][i % 4]
+    )
   );
 
   const transformTrigger = useTransform(scrollYProgress, (value) => {
