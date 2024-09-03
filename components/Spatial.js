@@ -25,6 +25,44 @@ const Spatial = ({ pictures }) => {
     current * unit + (3 * unit) / 5, //3/15 8/15 13/15 -> 1
   ];
 
+  const panningArrayKeyFrames = () => {
+    const arr = [];
+    for (let i = 0; i < pictures.length; i++) {
+      arr.push(
+        i * unit,
+        i * unit + (1 * unit) / 5,
+        i * unit + (2 * unit) / 5,
+        i * unit + (3 * unit) / 5
+      );
+    }
+    return arr;
+  };
+
+  const panningArrayValues = (direction) => {
+    const arr = [];
+    for (let i = 0; i < pictures.length; i++) {
+      arr.push(
+        "0%",
+        picturesObject[i].position[direction] === "auto"
+          ? "0%"
+          : `${
+              Number(picturesObject[i].position[direction].slice(0, -1)) *
+              picturesObject[i].scaleFactor *
+              -1
+            }%`,
+        picturesObject[i].position[direction] === "auto"
+          ? "0%"
+          : `${
+              Number(picturesObject[i].position[direction].slice(0, -1)) *
+              picturesObject[i].scaleFactor *
+              -1
+            }%`,
+        "0%"
+      );
+    }
+    return arr;
+  };
+
   const scale0 = useTransform(scrollYProgress, scaleTimestamps, [1, 4, 4, 1]);
   const scale1 = useTransform(
     scrollYProgress,
@@ -37,39 +75,63 @@ const Spatial = ({ pictures }) => {
     [1, 3.3, 3.3, 1]
   );
 
+  const picturesObject = [
+    {
+      src: pictures[0],
+      scale: scale0,
+      copy: {
+        title: "Space-Guesser",
+        subtitle: "autonomous academic project",
+        description:
+          "A simple web game that aims to explore and expand your knowledge about our solar system",
+        tech: "React, TailwindCSS, MobX, Firebase(backend), two external APIs",
+        demo: "https://space-guesser.web.app",
+        imgs: [],
+      },
+      position: { top: "auto", left: "auto" },
+      scaleFactor: 4,
+    },
+    {
+      src: pictures[1],
+      scale: scale1,
+      copy: {
+        title: "NgPokèdex",
+        subtitle: "autonomous personal project",
+        description:
+          "A digital version of the pokedex, with rudimental battle and collectible features integrated in the web app",
+        tech: "Angular, Vanilla CSS, PokeAPI, LocalStorage functions",
+        demo: "https://ngpokedex.vercel.app/",
+        imgs: [],
+      },
+      position: { top: "10%", left: "20%" },
+      scaleFactor: 3.3,
+    },
+    {
+      src: pictures[2],
+      scale: scale2,
+      copy: {
+        title: "FoodStuff",
+        subtitle: "autonomous academic project",
+        description:
+          "An all-around project of a grocery tracker app, with image recognition of ingredients in your fridge",
+        tech: "React Native,  Figma",
+        demo: "https://t.ly/VYyO3",
+        imgs: [],
+      },
+      position: { top: "-10%", left: "-20%" },
+      scaleFactor: 3.3,
+    },
+  ];
+
   const panCameraX = useTransform(
     scrollYProgress,
-    [
-      0,
-      3 / 15,
-      1 / 3,
-      6 / 15,
-      7 / 15,
-      8 / 15,
-      2 / 3,
-      11 / 15,
-      12 / 15,
-      13 / 15,
-      1,
-    ],
-    ["0%", "0%", "0%", "-60%", "-60%", "0%", "0%", "70%", "70%", "0%", "0%"]
+    panningArrayKeyFrames(),
+    panningArrayValues("left")
   );
   const panCameraY = useTransform(
     scrollYProgress,
-    [
-      0,
-      3 / 15,
-      1 / 3,
-      6 / 15,
-      7 / 15,
-      8 / 15,
-      2 / 3,
-      11 / 15,
-      12 / 15,
-      13 / 15,
-      1,
-    ],
-    ["0%", "0%", "0%", "-30%", "-30%", "0%", "0%", "32%", "32%", "0%", "0%"]
+    panningArrayKeyFrames(),
+    panningArrayValues("top")
   );
 
   const translateX = useTransform(
@@ -138,51 +200,6 @@ const Spatial = ({ pictures }) => {
       setCurrent(latestStep);
     });
   }, [transformTrigger]);
-
-  const picturesObject = [
-    {
-      src: pictures[0],
-      scale: scale0,
-      copy: {
-        title: "Space-Guesser",
-        subtitle: "autonomous academic project",
-        description:
-          "A simple web game that aims to explore and expand your knowledge about our solar system",
-        tech: "React, TailwindCSS, MobX, Firebase(backend), two external APIs",
-        demo: "https://space-guesser.web.app",
-        imgs: [],
-      },
-      position: { top: "auto", left: "auto" },
-    },
-    {
-      src: pictures[1],
-      scale: scale1,
-      copy: {
-        title: "NgPokèdex",
-        subtitle: "autonomous personal project",
-        description:
-          "A digital version of the pokedex, with rudimental battle and collectible features integrated in the web app",
-        tech: "Angular, Vanilla CSS, PokeAPI, LocalStorage functions",
-        demo: "https://ngpokedex.vercel.app/",
-        imgs: [],
-      },
-      position: { top: "10%", left: "20%" },
-    },
-    {
-      src: pictures[2],
-      scale: scale2,
-      copy: {
-        title: "FoodStuff",
-        subtitle: "autonomous academic project",
-        description:
-          "An all-around project of a grocery tracker app, with image recognition of ingredients in your fridge",
-        tech: "React Native,  Figma",
-        demo: "https://t.ly/VYyO3",
-        imgs: [],
-      },
-      position: { top: "-10%", left: "-20%" },
-    },
-  ];
 
   const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
@@ -277,6 +294,14 @@ const Spatial = ({ pictures }) => {
                   fill
                   alt="image"
                   className="!static object-contain p-2 !w-auto "
+                  onClick={() =>
+                    console.log(
+                      "left",
+                      panningArrayValues("left"),
+                      "top",
+                      panningArrayValues("top")
+                    )
+                  }
                 />
                 {/* </div> */}
                 <motion.div
