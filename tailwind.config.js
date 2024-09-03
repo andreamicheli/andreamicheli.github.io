@@ -26,6 +26,28 @@ module.exports = {
       backgroundImage: {
         "text-gradient": "linear-gradient(to right, #FAF8ED, #d4d5ec, #d4d5ec)", // Add your new color here
       },
+      animation: {
+        float: "float 20s infinite linear",
+        "float-fast": "float 10s infinite linear",
+        "float-fastest": "float 8s infinite linear",
+      },
+      keyframes: {
+        float: {
+          "0%": {
+            transform:
+              " rotate(-0.001deg) translate3d(5px, 0, 0) rotate(-0.001deg)",
+          },
+          "100%": {
+            transform:
+              "rotate(360.001deg) translate3d(5px, 0, 0) rotate(-360.001deg)",
+          },
+        },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+      },
     },
   },
   plugins: [],

@@ -163,7 +163,7 @@ const Spatial = ({ pictures }) => {
         description:
           "A digital version of the pokedex, with rudimental battle and collectible features integrated in the web app",
         tech: "Angular, Vanilla CSS, PokeAPI, LocalStorage functions",
-        demo: "https://.web.app/",
+        demo: "https://ngpokedex.vercel.app/",
         imgs: [],
       },
       position: { top: "10%", left: "20%" },
@@ -177,7 +177,7 @@ const Spatial = ({ pictures }) => {
         description:
           "An all-around project of a grocery tracker app, with image recognition of ingredients in your fridge",
         tech: "React Native,  Figma",
-        demo: "https://space-guesser.web.app/",
+        demo: "https://t.ly/VYyO3",
         imgs: [],
       },
       position: { top: "-10%", left: "-20%" },
@@ -254,12 +254,6 @@ const Spatial = ({ pictures }) => {
       ref={container}
       style={{ height: picturesObject.length * 800 + "vh" }}
     >
-      <div className="fixed top-0 right-0 p-4 bg-green-200">
-        {scrollYProgress.get()}
-      </div>
-
-      <div className="w-full h-full absolute top-1/3 border-t-2 border-red-500 z-10"></div>
-      <div className="w-full h-full absolute top-2/3 border-t-2 border-red-500 z-10"></div>
       <div className="sticky overflow-hidden top-0 h-screen">
         {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
@@ -275,16 +269,18 @@ const Spatial = ({ pictures }) => {
                   ...imageContainerStyles,
                   opacity: current !== index && opacityExternal,
                 }}
-                className="relative flex justify-center"
+                className="relative flex justify-center animate-float-fastest"
               >
+                {/* <div className="relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"> */}
                 <Image
                   src={src}
                   fill
                   alt="image"
-                  className="!static object-contain p-2 !w-auto"
+                  className="!static object-contain p-2 !w-auto "
                 />
+                {/* </div> */}
                 <motion.div
-                  className="flex flex-col py-2 w-20 gap-2 items-center text-cream_dark"
+                  className="flex flex-col py-2 w-20 gap-2 items-center text-cream_extralight"
                   style={{ opacity: current === index ? opacity : "0%" }}
                 >
                   <div className="flex flex-col items-center">
@@ -306,9 +302,11 @@ const Spatial = ({ pictures }) => {
                     href={copy.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[.3rem] bg-cream_medium text-peri_dark font-bold brightness-90 shadow-md p-1 rounded-md hover:underline hover:cursor-pointer hover:brightness-100 hover:scale-105"
+                    className="text-[.3rem] text-center border-solid border-[.5px] border-cream_extralight text-cream_extralight font-bold brightness-90 shadow-md p-1 rounded-md hover:underline hover:cursor-pointer hover:brightness-100 hover:scale-105"
                   >
-                    {copy.demo.replace(/(https?:\/\/)?(www\.)?/, "")}
+                    {copy.demo
+                      .replace(/(https?:\/\/)?(www\.)?/, "")
+                      .replace(/\/$/, "")}
                   </a>
                 </motion.div>
               </motion.div>
