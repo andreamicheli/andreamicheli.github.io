@@ -247,6 +247,15 @@ const Spatial = ({ pictures }) => {
       style={{ height: picturesObject.length * 800 + "vh" }}
     >
       <div className="sticky overflow-hidden top-0 h-screen">
+        <div className="relative w-screen h-screen">
+          <motion.div
+            style={{ scaleY: scrollYProgress }}
+            className="fixed -top-[100vh] right-0 w-2 bg-cream_extralight h-[200%] opacity-20 rounded-full"
+          >
+            test
+          </motion.div>
+        </div>
+
         {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
           return (
