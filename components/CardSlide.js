@@ -25,16 +25,18 @@ const CardSlide = ({
   return (
     <motion.div
       style={{ x: translateX }}
-      className={`flex gap-10  ${
-        imagePosition === "right" ? "flex-row text-right" : "flex-row-reverse"
+      className={`flex gap-10 flex-col w-2/3 lg:w-auto  ${
+        imagePosition === "right"
+          ? "lg:flex-row text-right"
+          : "lg:flex-row-reverse"
       }`}
       onHoverStart={() => sethover(true)}
       onHoverEnd={() => sethover(false)}
     >
       <div className={`text-3xl flex flex-col gap-2 `}>
-        <h2 className="text-8xl mb-2">{company}</h2>
-        <h2 className="text-6xl mb-2 font-light">{title}</h2>
-        <h3 className="text-4xl font-extralight">{subtitle}</h3>
+        <h2 className="lg:text-8xl text-5xl mb-2">{company}</h2>
+        <h2 className="lg:text-6xl text-2xl mb-2 font-light">{title}</h2>
+        <h3 className="lg:text-4xl text-xl font-extralight">{subtitle}</h3>
         {/* <p>{paragraph}</p> */}
       </div>
       <div
