@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.6",
+    "@types/three": "^0.168.0",
     "framer-motion": "^11.2.11",
     "fs": "^0.0.1-security",
     "lenis": "^1.1.4",
@@ -16,7 +19,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-plx": "^2.0.1",
-    "react-scroll-motion": "^0.3.0"
+    "react-scroll-motion": "^0.3.0",
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

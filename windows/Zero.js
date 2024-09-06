@@ -3,21 +3,20 @@ import Container from "../components/Container";
 import React from "react";
 
 import Plx from "react-plx";
+import Face from "../components/Face";
 
 function zero() {
   return (
     <Container vh={"300vh"}>
-      <div className="h-full flex lg:flex-row flex-col justify-between gap-10 items-top">
+      <div className="h-full flex lg:flex-row flex-col lg:justify-center justify-start items-top">
         <div
-          className="bg-black text-white w-full h-[calc(100vh-80px)] sticky top-10
-             flex justify-center items-center text-3xl text-center"
+          className="text-white w-full h-[calc(100vh-80px)] lg:w-1/2 sticky top-10
+             flex justify-start lg:justify-center items-center text-3xl text-center"
         >
-          FACCIA 3D
-          <br />
-          {":)"}
+          <Face />
         </div>
-        <div>
-          <div className="sticky top-1/3 bottom-1/3">
+        <div className="lg:h-auto h-full">
+          <div className="sticky lg:top-1/3 top-2/3 lg:bottom-1/3 ">
             <Bigtitle title={"HI!"} />
             {/* </Plx> */}
 
