@@ -1,19 +1,20 @@
 import Bigtitle from "../components/Bigtitle";
 import Container from "../components/Container";
-import React from "react";
+import React, { useRef } from "react";
 
 import Plx from "react-plx";
 import Face from "../components/Face";
 
-function zero() {
+function Zero() {
+  const wrapper = useRef(null);
   return (
-    <Container vh={"300vh"}>
+    <div className="h-[300vh]" ref={wrapper}>
       <div className="h-full flex lg:flex-row flex-col lg:justify-center justify-start items-top">
         <div
           className="text-white w-full h-[calc(100vh-80px)] lg:w-1/2 sticky top-10
              flex justify-start lg:justify-center items-center text-3xl text-center"
         >
-          <Face />
+          <Face container={wrapper} />
         </div>
         <div className="lg:h-auto h-full">
           <div className="sticky lg:top-1/3 top-2/3 lg:bottom-1/3 ">
@@ -82,8 +83,8 @@ function zero() {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 
-export default zero;
+export default Zero;
