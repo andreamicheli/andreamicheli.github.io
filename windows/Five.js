@@ -63,18 +63,17 @@ function Five() {
           </a>
           <motion.div
             href="mailto:andrea.micheli@aalto.fi"
-            className="absolute w-0 underline overflow-hidden cursor-pointer flex justify-start"
+            className="absolute w-0 underline overflow-hidden cursor-pointer flex items-start flex-col" //translate-y-12
             animate={controls}
             onClick={() => open("mailto:andrea.micheli@aalto.fi")}
           >
             andrea.micheli@aalto.fi
+            {/* <div className="flex flex-row justify-between font-normal text-cream_light text-6xl mt-9 underline gap-20">
+              <div>linkedin</div>
+              <div>github</div>
+            </div> */}
           </motion.div>
         </motion.div>
-        {/* <div className="flex flex-col items-center">
-          <a className="text-5xl bg-peri_dark font-bold text-white shadow-sm p-2.5 rounded-2xl hover:cursor-pointer hover:brightness-100 hover:scale-105 transition-all">
-            in
-          </a>
-        </div> */}
       </Container>
     </motion.div>
   );
