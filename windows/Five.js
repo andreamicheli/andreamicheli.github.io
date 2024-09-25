@@ -47,10 +47,10 @@ function Five() {
     >
       <Container
         vh={"100vh"}
-        style={"flex justify-center gap-10 items-center w-full"}
+        style={"flex justify-center gap-10 items-center w-full relative"}
       >
         <motion.div
-          className="h-1/3 flex items-center lg:text-8xl text-4xl text-center text-peri_dark font-bold"
+          className="h-1/3 flex items-center lg:text-8xl text-3xl text-center text-peri_dark font-bold"
           onHoverStart={startAnimation}
           onHoverEnd={endAnimation}
         >
@@ -74,6 +74,20 @@ function Five() {
             </div> */}
           </motion.div>
         </motion.div>
+        <div className="absolute bottom-24 lg:w-96 w-72 flex flex-row justify-between font-bold text-peri_light text-3xl mt-9">
+          <a
+            href="https://www.linkedin.com/in/andrea-micheli-00ay00/"
+            className="hover:text-peri_dark hover:underline transition"
+          >
+            linkedIn
+          </a>
+          <a
+            href="https://github.com/andreamicheli"
+            className="hover:text-peri_dark hover:underline transition"
+          >
+            GitHub
+          </a>
+        </div>
       </Container>
     </motion.div>
   );
