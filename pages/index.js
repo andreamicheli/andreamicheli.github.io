@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import Loading from "../components/Loading";
 import Four from "../windows/Four";
+import Five from "../windows/Five";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -72,6 +73,7 @@ export default function Home({ files }) {
           <Four />
           {/* pagina 5 */}
         </div>
+        <Five />
       </div>
     </Loading>
   );
