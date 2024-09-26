@@ -77,12 +77,16 @@ function Five() {
         <div className="absolute bottom-24 lg:w-96 w-72 flex flex-row justify-between font-bold text-peri_light text-3xl mt-9">
           <a
             href="https://www.linkedin.com/in/andrea-micheli-00ay00/"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-peri_dark hover:underline transition"
           >
             linkedIn
           </a>
           <a
             href="https://github.com/andreamicheli"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-peri_dark hover:underline transition"
           >
             GitHub
