@@ -27,7 +27,7 @@ function One({ files }) {
   return (
     <Container vh={"500vh"}>
       <div
-        className="sticky top-0 w-full h-screen"
+        className="sticky top-0 w-full h-screen md:p-20"
         style={{ contain: "paint" }}
       >
         <div className="absolute top-20">

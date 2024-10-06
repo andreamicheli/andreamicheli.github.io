@@ -68,7 +68,7 @@ const Loading = ({ children }) => {
   useEffect(() => {
     // Function to prevent default behavior for scroll events
     const preventScroll = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
     };
 
     if (loading) {

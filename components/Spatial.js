@@ -134,18 +134,6 @@ const Spatial = ({ pictures }) => {
     panningArrayValues("top")
   );
 
-  // const translateX = useTransform(
-  //   scrollYProgress,
-  //   [
-  //     current * unit,
-  //     current * unit + (1 * unit) / 5,
-  //     current * unit + (2 * unit) / 5,
-  //     current * unit + (2.3 * unit) / 5,
-  //     current * unit + (2.5 * unit) / 5,
-  //   ],
-  //   ["0px", "30px", "-10px", "-10px", "0px"]
-  // );
-
   const opacity = useTransform(
     scrollYProgress,
     [
@@ -175,8 +163,6 @@ const Spatial = ({ pictures }) => {
       setCurrent(latestStep);
     });
   }, [transformTrigger]);
-
-  const blackandwhite = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   // Define dynamic styles based on the index
   const getImageContainerStyles = (index) => {
@@ -246,7 +232,7 @@ const Spatial = ({ pictures }) => {
       ref={container}
       style={{ height: picturesObject.length * 800 + "vh" }}
     >
-      <div className="sticky overflow-hidden top-0 h-screen">
+      <div className="sticky overflow-hidden top-0 h-screen pointer-events-none">
         <div className="relative w-screen h-screen">
           <motion.div
             style={{ scaleY: scrollYProgress }}
@@ -278,14 +264,6 @@ const Spatial = ({ pictures }) => {
                   fill
                   alt="image"
                   className="!static object-contain p-2 !w-auto "
-                  onClick={() =>
-                    console.log(
-                      "left",
-                      panningArrayValues("left"),
-                      "top",
-                      panningArrayValues("top")
-                    )
-                  }
                 />
                 {/* </div> */}
                 <motion.div
@@ -311,7 +289,7 @@ const Spatial = ({ pictures }) => {
                     href={copy.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[.3rem] text-center border-solid border-[.5px] border-cream_extralight text-cream_extralight font-bold brightness-90 shadow-md p-1 rounded-md hover:underline hover:cursor-pointer hover:brightness-100 hover:scale-105"
+                    className="pointer-events-auto relative z-50 text-[.3rem] text-center border-solid border-[.5px] border-cream_extralight text-cream_extralight font-bold brightness-90 shadow-md p-1 rounded-md hover:underline hover:cursor-pointer hover:brightness-100 hover:scale-105"
                   >
                     {copy.demo
                       .replace(/(https?:\/\/)?(www\.)?/, "")

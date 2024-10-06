@@ -64,9 +64,9 @@ const AnimatedImage = ({
           marginRight: "auto",
           transform: "translate(25%, 25%)", // Center the span horizontally
           transition: "opacity 0.5s",
-          pointerEvents: "none",
+          // pointerEvents: "none",
         }}
-        onHoverStart={(e) => e.preventDefault()}
+        // onHoverStart={(e) => e.preventDefault()}
       >
         <p className="w-fit h-fit bg-black p-2">{label}</p>
       </motion.span>
