@@ -52,7 +52,7 @@ export default function Home({ files }) {
       <Head>
         <title>Andrea Micheli&#39;s portfolio</title>
         <meta name="description" content="Andrea Micheli's portfolio" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/website_icon.ico" />
       </Head>
 
       <div className="bg-transparent" id="main">
