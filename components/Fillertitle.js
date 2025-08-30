@@ -13,7 +13,7 @@ const Fillertitle = ({ title, progress }) => {
         backgroundSize, // Adjust as needed
         transition: "background-size 0.5s linear",
       }}
-      className="lg:text-[20vh] text-6xl font-extrabold text-cream_extralight text-opacity-20 "
+      className="lg:text-[20vh] text-6xl font-extrabold text-cream_extralight text-opacity-20 absolute"
     >
       {title.toUpperCase()}
     </motion.div>

@@ -53,6 +53,7 @@ function Five() {
           className="h-1/3 flex items-center lg:text-8xl text-3xl text-center text-peri_dark font-bold"
           onHoverStart={startAnimation}
           onHoverEnd={endAnimation}
+          id="Contacts"
         >
           <a
             href="mailto:andrea.micheli@aalto.fi"

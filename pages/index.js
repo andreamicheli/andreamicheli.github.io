@@ -12,6 +12,7 @@ import Lenis from "lenis";
 import Loading from "../components/Loading";
 import Four from "../windows/Four";
 import Five from "../windows/Five";
+import Navbar from "../components/Navbar";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -46,6 +47,9 @@ export default function Home({ files }) {
           display: none; /* Chrome, Safari, Opera*/
         }
       `}</style>
+      <div className="bg-transparent fixed top-10 right-10 z-[60]">
+        <Navbar />
+      </div>
       <div className="bg-transparent fixed bottom-5 right-10">
         <Arrow />
       </div>
@@ -55,7 +59,7 @@ export default function Home({ files }) {
         <link rel="icon" href="/website_icon.ico" />
       </Head>
 
-      <div className="bg-transparent" id="main">
+      <div className="bg-transparent">
         {/* pagina 0 */}
         <div className="bg-cream_extralight">
           <Zero />

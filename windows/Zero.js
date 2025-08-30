@@ -16,7 +16,7 @@ function Zero() {
         >
           <Face container={wrapper} />
         </div>
-        <div className="lg:h-auto h-full">
+        <div className="lg:h-auto h-full" id="Home">
           <div className="sticky lg:top-1/3 top-2/3 lg:bottom-1/3 ">
             <Bigtitle title={"HI!"} />
             {/* </Plx> */}

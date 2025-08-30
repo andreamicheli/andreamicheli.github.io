@@ -228,6 +228,7 @@ const Spatial = ({ pictures }) => {
 
   return (
     <div
+      id="Projects"
       className="w-full relative"
       ref={container}
       style={{ height: picturesObject.length * 800 + "vh" }}

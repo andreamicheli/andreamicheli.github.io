@@ -25,7 +25,7 @@ const CardSlide = ({
   return (
     <motion.div
       style={{ x: translateX }}
-      className={`flex gap-10 flex-col w-2/3 lg:w-auto  ${
+      className={`flex gap-10 flex-col lg:w-auto ${
         imagePosition === "right"
           ? "lg:flex-row text-right"
           : "lg:flex-row-reverse"
@@ -33,29 +33,35 @@ const CardSlide = ({
       onHoverStart={() => sethover(true)}
       onHoverEnd={() => sethover(false)}
     >
-      <div className={`text-3xl flex flex-col gap-2 `}>
+      <div className="text-3xl flex flex-col gap-2">
         <h2 className="lg:text-8xl text-5xl mb-2">{company}</h2>
         <h2 className="lg:text-6xl text-2xl mb-2 font-light">{title}</h2>
-        <h3 className="lg:text-4xl text-xl font-extralight">{subtitle}</h3>
-        {/* <p>{paragraph}</p> */}
+        <h3 className="lg:text-4xl text-xl font-extralight whitespace-nowrap">
+          {subtitle}
+        </h3>
       </div>
-      <div
-        className="h-full p-4 relative rounded-lg"
-        style={{ aspectRatio: "3/2" }}
-      >
+
+      {/* Keep original aspect ratio (no forced 3:2) */}
+      <div className="relative rounded-lg overflow-hidden max-w-[600px]">
         <Image
-          className="rounded-xl shadow-2xl"
           src={office}
-          fill="true"
           alt="office"
-          style={hover === false ? { filter: "grayscale(100%)" } : ""}
+          width={1200} // supply the real intrinsic size if known
+          height={1000} // (width & height just define ratio; adjust to match original)
+          className="rounded-xl shadow-2xl object-cover w-full h-auto transition-all"
+          style={hover ? {} : { filter: "grayscale(100%)" }}
         />
       </div>
-      <div className="h-full p-4 relative" style={{ aspectRatio: "1/1" }}>
+
+      {/* Keep original aspect ratio (no forced 1:1) */}
+      <div className="relative overflow-hidden max-w-[350px]">
         <Image
           src={image}
-          fill="true"
           alt="Card Image"
+          // replace with the real intrinsic width/height of this image
+          width={150}
+          height={150}
+          className="object-cover w-full h-auto"
           style={{ filter: "grayscale(100%) brightness(5)" }}
         />
       </div>

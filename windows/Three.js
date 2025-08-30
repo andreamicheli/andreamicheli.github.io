@@ -34,7 +34,11 @@ const Three = () => {
 
   return (
     <Container vh={"500vh"} style={"overflow-hidden flex flex-col gap-40"}>
-      <div className="w-full flex justify-center" ref={containerFillEducation}>
+      <div
+        className="w-full flex justify-center"
+        ref={containerFillEducation}
+        id="Education"
+      >
         <Fillertitle
           title="Education"
           progress={scrollYProgressFillerEducation}
@@ -78,7 +82,11 @@ const Three = () => {
           direction={"right"}
         />
       </div>
-      <div className="w-full flex justify-center" ref={containerFillExperience}>
+      <div
+        className="w-full flex justify-center"
+        ref={containerFillExperience}
+        id="Experience"
+      >
         <Fillertitle
           title="Experience"
           progress={scrollYProgressFillerExperience}
@@ -113,6 +121,19 @@ const Three = () => {
           title={"Frontend engineer"}
           progress={scrollYProgressSlideExperience}
           direction={"left"}
+        />
+        <CardSlide
+          company={"Huawei"}
+          image={"/logos/huawei.png"}
+          office={"/places/huawei_office.webp"}
+          imagePosition={"right"}
+          paragraph={
+            "Autonomously Designed & Developed an interactive simulator for satellite constellations, modeling orbits and ground connections. Mastered technologies like Cesium.js, WebWorkers, Angular with a Flask backend"
+          }
+          subtitle={"2025 - Munich Research Center"}
+          title={"Full Stack engineer"}
+          progress={scrollYProgressSlideExperience}
+          direction={"right"}
         />
       </div>
     </Container>
