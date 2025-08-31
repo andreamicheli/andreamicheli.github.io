@@ -13,6 +13,7 @@ import Loading from "../components/Loading";
 import Four from "../windows/Four";
 import Five from "../windows/Five";
 import Navbar from "../components/Navbar";
+import Mobile from "../components/Mobile";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -47,6 +48,7 @@ export default function Home({ files }) {
           display: none; /* Chrome, Safari, Opera*/
         }
       `}</style>
+      <Mobile />
       <div className="bg-transparent fixed top-10 right-10 z-[60]">
         <Navbar />
       </div>
