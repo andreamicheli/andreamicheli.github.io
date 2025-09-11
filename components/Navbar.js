@@ -72,13 +72,13 @@ function Navbar() {
       <div
         className={
           isVisible
-            ? "flex flex-row gap-4 transition-opacity duration-300  opacity-100"
-            : "flex flex-row gap-4 transition-opacity duration-300 opacity-0"
+            ? "flex md:flex-row flex-col-reverse gap-4 transition-opacity duration-300  opacity-100"
+            : "flex md:flex-row flex-col-reverse gap-4 transition-opacity duration-300 opacity-0 "
         }
       >
         <div
           className={
-            "flex gap-2 h-8 items-center rounded-2xl lg:max-w-screen-2xl max-w-screen-sm pl-4 flex-wrap justify-between"
+            "flex gap-2 md:h-8 md:translate-x-0 -translate-x-24 items-end lg:max-w-screen-2xl w-8 md:w-auto pl-4 flex-wrap justify-between"
           }
         >
           <Tags></Tags>
