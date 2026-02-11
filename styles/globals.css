@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,3 +52,10 @@ a {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Geist Pixel';
+  src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
