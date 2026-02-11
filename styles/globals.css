@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +6,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
 }
 
 a {
@@ -22,39 +30,44 @@ a {
 }
 
 @font-face {
-  font-family: 'Larsseit';
-  src: url('../public/Larsseit.woff') format('woff2');
+  font-family: "Larsseit";
+  src: url("/Larsseit.woff") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Larsseit';
-  src: url('../public/Larsseit-Bold.woff') format('woff2');
+  font-family: "Larsseit";
+  src: url("/Larsseit-Bold.woff") format("woff2");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Larsseit';
-  src: url('../public/Larsseit-Medium.woff') format('woff2');
-  font-weight: medium;
+  font-family: "Larsseit";
+  src: url("/Larsseit-Medium.woff") format("woff2");
+  font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Larsseit';
-  src: url('../public/Larsseit-Thin.woff') format('woff2');
-  font-weight: thin;
+  font-family: "Larsseit";
+  src: url("/Larsseit-Thin.woff") format("woff2");
+  font-weight: 100;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: 'Larsseit';
-  src: url('../public/Larsseit-ExtraBold.woff') format('woff2');
-  font-weight: extrabold;
+  font-family: "Larsseit";
+  src: url("/Larsseit-ExtraBold.woff") format("woff2");
+  font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Geist Pixel';
-  src: url('/fonts/GeistPixel-Square.woff2') format('woff2');
+  font-family: "Geist Pixel";
+  src: url("/fonts/GeistPixel-Square.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
