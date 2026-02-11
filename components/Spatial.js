@@ -74,6 +74,11 @@ const Spatial = ({ pictures }) => {
     scaleTimestamps,
     [1, 3.3, 3.3, 1]
   );
+  const scaleSmall = useTransform(
+    scrollYProgress,
+    scaleTimestamps,
+    [0.85, 2.9, 2.9, 0.85]
+  );
 
   const picturesObject = [
     {
@@ -119,6 +124,51 @@ const Spatial = ({ pictures }) => {
         imgs: [],
       },
       position: { top: "-10%", left: "-20%" },
+      scaleFactor: 3.3,
+    },
+    {
+      src: pictures[3],
+      scale: scale0,
+      copy: {
+        title: "SATLAS",
+        subtitle: "Huawei Munich Reseach Center",
+        description:
+          "An interactive simulator for satellite constellations, modeling orbits and ground connections",
+        tech: "Angular, Figma, Cesium, Flask, WebWorkers",
+        demo: "https://www.aalto.fi",
+        imgs: [],
+      },
+      position: { top: "28%", left: "-20%" },
+      scaleFactor: 4.0,
+    },
+    {
+      src: pictures[4],
+      scale: scale0,
+      copy: {
+        title: "GROUPEE",
+        subtitle: "autonomous academic project",
+        description:
+          "A platform that simplifies and enhances group formation processes",
+        tech: "Angular, Figma, Firebase",
+        demo: "https://groupee-fi.web.app/",
+        imgs: [],
+      },
+      position: { top: "28%", left: "5%" },
+      scaleFactor: 4.0,
+    },
+    {
+      src: pictures[5],
+      scale: scaleSmall,
+      copy: {
+        title: "Darwin",
+        subtitle: "open source, work in progress",
+        description:
+          "An open-source adaptive UI experience exploring fluid layout and interaction behaviors",
+        tech: "Vite, React, CSS, transformers.js",
+        demo: "https://darwin-alpha.vercel.app/",
+        imgs: [],
+      },
+      position: { top: "-20%", left: "28%" },
       scaleFactor: 3.3,
     },
   ];
@@ -170,8 +220,8 @@ const Spatial = ({ pictures }) => {
       case 0:
         return {
           // x: translateX,
-          width: "30%",
-          height: "25%",
+          width: "22%",
+          height: "20%",
         };
       case 1:
         return {
@@ -193,24 +243,24 @@ const Spatial = ({ pictures }) => {
         return {
           top: picturesObject[index].position.top || "auto",
           left: picturesObject[index].position.left || "27.5%",
-          width: "25%",
-          height: "25%",
+          width: "21%",
+          height: "21%",
           // x: translateX,
         }; // top is not changed
       case 4:
         return {
           top: picturesObject[index].position.top || "27.5%",
           left: picturesObject[index].position.left || "5%",
-          width: "20%",
-          height: "25%",
+          width: "18%",
+          height: "23%",
           // x: translateX,
         };
       case 5:
         return {
-          top: picturesObject[index].position.top || "27.5%",
-          left: picturesObject[index].position.left || "-22.5%",
-          width: "30%",
-          height: "25%",
+          top: picturesObject[index].position.top || "-20%",
+          left: picturesObject[index].position.left || "28%",
+          width: "32%",
+          height: "24%",
           // x: translateX,
         };
       case 6:
@@ -233,7 +283,7 @@ const Spatial = ({ pictures }) => {
       ref={container}
       style={{ height: picturesObject.length * 800 + "vh" }}
     >
-      <div className="sticky overflow-hidden top-0 h-screen pointer-events-none">
+      <div className="sticky top-0 h-screen pointer-events-none overflow-visible">
         <div className="relative w-screen h-screen">
           <motion.div
             style={{ scaleY: scrollYProgress }}
@@ -245,6 +295,9 @@ const Spatial = ({ pictures }) => {
 
         {picturesObject.map(({ src, scale, copy }, index) => {
           const imageContainerStyles = getImageContainerStyles(index);
+          const isGroupee = index === 4;
+          const isDarwin = index === 5;
+          const hasRoundedCorners = isGroupee;
           return (
             <motion.div
               key={index}
@@ -260,15 +313,41 @@ const Spatial = ({ pictures }) => {
                 className="relative flex justify-center animate-float-fastest"
               >
                 {/* <div className="relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat hover:before:bg-[position:-100%_0,0_0] hover:before:duration-[1500ms]"> */}
-                <Image
-                  src={src}
-                  fill
-                  alt="image"
-                  className="!static object-contain p-2 !w-auto "
-                />
+                {isDarwin ? (
+                  <div className="relative h-full w-[72%] p-2">
+                    <video
+                      src={src}
+                      className="w-full h-full object-contain"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                  </div>
+                ) : hasRoundedCorners ? (
+                  <div className="relative w-full h-full p-2">
+                    <div className="relative w-full h-full rounded-lg overflow-hidden">
+                      <Image
+                        src={src}
+                        fill
+                        alt="image"
+                        className={isGroupee ? "object-contain" : "object-cover"}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={src}
+                    fill
+                    alt="image"
+                    className="!static object-contain p-2 !w-auto"
+                  />
+                )}
                 {/* </div> */}
                 <motion.div
-                  className="flex flex-col py-2 w-20 gap-2 items-center text-cream_extralight"
+                  className={`flex flex-col py-2 ${
+                    index === 5 ? "w-40" : "w-28"
+                  } gap-2 items-center text-cream_extralight`}
                   style={{ opacity: current === index ? opacity : "0%" }}
                 >
                   <div className="flex flex-col items-center">
