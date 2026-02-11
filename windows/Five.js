@@ -19,7 +19,7 @@ function Five() {
   const background = useTransform(
     scrollYProgress,
     [0, 0.5],
-    ["#373cab", "#faf8ed"]
+    ["#373cab", "#faf8ed"],
   );
 
   const controls = useAnimation();
@@ -56,19 +56,19 @@ function Five() {
           id="Contacts"
         >
           <a
-            href="mailto:andrea.micheli@aalto.fi"
+            href="mailto:andymicheli2000@gmail.com"
             z
-            onClick={() => open("mailto:andrea.micheli@aalto.fi")}
+            onClick={() => open("mailto:andymicheli2000@gmail.com")}
           >
-            andrea.micheli@aalto.fi
+            andymicheli2000@gmail.com
           </a>
           <motion.div
-            href="mailto:andrea.micheli@aalto.fi"
+            href="mailto:andymicheli2000@gmail.com"
             className="absolute w-0 underline overflow-hidden cursor-pointer flex items-start flex-col" //translate-y-12
             animate={controls}
-            onClick={() => open("mailto:andrea.micheli@aalto.fi")}
+            onClick={() => open("mailto:andymicheli2000@gmail.com")}
           >
-            andrea.micheli@aalto.fi
+            andymicheli2000@gmail.com
             {/* <div className="flex flex-row justify-between font-normal text-cream_light text-6xl mt-9 underline gap-20">
               <div>linkedin</div>
               <div>github</div>

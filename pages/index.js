@@ -14,6 +14,7 @@ import Four from "../windows/Four";
 import Five from "../windows/Five";
 import Navbar from "../components/Navbar";
 import Mobile from "../components/Mobile";
+import GradientMessage from "../components/GradientMessage";
 
 export async function getStaticProps() {
   const files = fs.readdirSync("public/beauty/array");
@@ -75,6 +76,7 @@ export default function Home({ files }) {
         <div className="bg-peri_dark">
           {/* pagina 3 */}
           <Three />
+          <GradientMessage />
           {/* pagina 4 */}
           <Four />
           {/* pagina 5 */}
