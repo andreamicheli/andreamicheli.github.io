@@ -135,6 +135,21 @@ const Three = () => {
           progress={scrollYProgressSlideExperience}
           direction={"right"}
         />
+        <CardSlide
+          company={"frog"}
+          image={"/logos/frog.svg"}
+          office={"/places/pharo_building.jpg"}
+          imagePosition={"left"}
+          officeSizeClass="max-w-[360px]"
+          logoSizeClass="max-w-[270px] w-[270px]"
+          paragraph={
+            "Worked as a design technologist supporting prototyping and front-end implementation for client projects"
+          }
+          subtitle={"2025 - current - Design Agency"}
+          title={"Design technologist"}
+          progress={scrollYProgressSlideExperience}
+          direction={"left"}
+        />
       </div>
     </Container>
   );

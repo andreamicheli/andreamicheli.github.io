@@ -12,6 +12,8 @@ const CardSlide = ({
   imagePosition,
   direction,
   progress,
+  officeSizeClass = "max-w-[600px]",
+  logoSizeClass = "max-w-[350px]",
 }) => {
   const slidedirection = direction == "left" ? -1 : 1;
 
@@ -42,7 +44,9 @@ const CardSlide = ({
       </div>
 
       {/* Keep original aspect ratio (no forced 3:2) */}
-      <div className="relative rounded-lg overflow-hidden max-w-[600px]">
+      <div
+        className={`relative rounded-lg overflow-hidden ${officeSizeClass}`}
+      >
         <Image
           src={office}
           alt="office"
@@ -54,7 +58,7 @@ const CardSlide = ({
       </div>
 
       {/* Keep original aspect ratio (no forced 1:1) */}
-      <div className="relative overflow-hidden max-w-[350px]">
+      <div className={`relative overflow-hidden ${logoSizeClass}`}>
         <Image
           src={image}
           alt="Card Image"
