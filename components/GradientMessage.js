@@ -110,7 +110,8 @@ const GradientMessage = () => {
   const [offsetRange, setOffsetRange] = useState({ start: 0, end: 0 });
   const [overlayPadding, setOverlayPadding] = useState(0);
   const highlightPhrases = [
-    "Copilot CLI",
+    "Google AI Studio",
+    "Gemini team",
     "frog Innovation",
     "design-to-code pipelines",
     "AI-ready design systems",
@@ -122,7 +123,7 @@ const GradientMessage = () => {
       .join("|")})`,
     "g",
   );
-  const message = `Dear Github team :D, this website has been mostly made before the AI era, but I like to rework it time to time teting the newst tools. Right now, I'm adding these lines with the Copilot CLI.
+  const message = `Dear Google AI Studio and Gemini team :D, this website was mostly built before the AI era, but I like to rework it from time to time while testing the newest tools. Right now, I'm adding these lines with Google AI Studio.
 I'm currently employed at frog Innovation where we're working with international clients, trying to help them reshape their products with a new visual and strategic perspective.
 
 My focus is currently on the design-to-code pipelines, and on building AI-ready design systems.
